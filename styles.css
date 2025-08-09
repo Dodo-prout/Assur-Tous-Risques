@@ -1,0 +1,15 @@
+/* Import Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Classes utilitaires personnalisées pour les composants complexes */
+@layer utilities {
+  .bg-hero {
+    background-image: url('images/backgroundcard.jpg');
+  }
+  
+  .bg-services {
+    background-image: url('images/backgroundcard.jpg');
+  }
+}

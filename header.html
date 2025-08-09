@@ -1,0 +1,42 @@
+<!-- Header fixe avec backdrop blur -->
+<header class="fixed inset-x-0 top-0 z-50 backdrop-blur-lg bg-white/70 shadow-md transition-colors">
+    <div class="mx-auto max-w-7xl flex items-center justify-between px-6 py-3">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 text-gray-900">
+            <img src="images/Logo ATR.png" alt="Logo Assur Tous Risques" class="w-8 h-8">
+            <span class="font-semibold text-lg tracking-tight">
+                <span class="text-primary">ASSUR</span> <span class="text-gray-500">TOUS</span> <span class="text-primary">RISQUES</span>
+            </span>
+        </a>
+
+        <!-- Menu desktop -->
+        <nav class="hidden lg:flex gap-8">
+            <a href="#accueil" class="nav-underline text-gray-700 hover:text-primary transition">Accueil</a>
+            <a href="#services" class="nav-underline text-gray-700 hover:text-primary transition">Services</a>
+            <a href="#apropos" class="nav-underline text-gray-700 hover:text-primary transition">À propos</a>
+            <a href="#contact" class="nav-underline text-gray-700 hover:text-primary transition">Contact</a>
+        </nav>
+
+        <!-- Téléphone + bouton desktop -->
+        <div class="hidden lg:flex items-center gap-4">
+            <span class="flex items-center gap-1 text-sm text-gray-600">
+                <i class="fas fa-phone w-4 h-4"></i> 01 23 45 67 89
+            </span>
+            <a href="#contact" class="bg-primary text-white px-5 py-2 rounded hover:bg-primary-dark shadow transition">Demander un devis</a>
+        </div>
+
+        <!-- Burger (mobile) -->
+        <button id="nav-toggle" class="lg:hidden p-2 rounded hover:bg-gray-200/50 transition">
+            <i class="fas fa-bars w-6 h-6"></i>
+        </button>
+    </div>
+
+    <!-- Menu mobile -->
+    <nav id="mobile-nav" class="fixed inset-y-0 right-0 w-72 max-w-full bg-white/90 backdrop-blur-md shadow-xl translate-x-full transition-transform lg:hidden flex flex-col pt-24 px-6 gap-6">
+        <a href="#accueil" class="text-gray-800 text-lg font-medium hover:text-primary transition">Accueil</a>
+        <a href="#services" class="text-gray-800 text-lg font-medium hover:text-primary transition">Services</a>
+        <a href="#apropos" class="text-gray-800 text-lg font-medium hover:text-primary transition">À propos</a>
+        <a href="#contact" class="text-gray-800 text-lg font-medium hover:text-primary transition">Contact</a>
+        <a href="#contact" class="bg-primary text-white px-5 py-2 rounded hover:bg-primary-dark shadow transition mt-4 text-center">Demander un devis</a>
+    </nav>
+</header>
