@@ -23,6 +23,10 @@ function initMobileMenu() {
     
     if (navToggle && mobileNav) {
         navToggle.addEventListener('click', function() {
+            // Toggle de la classe active pour l'animation du hamburger
+            navToggle.classList.toggle('active');
+            
+            // Toggle du menu mobile
             mobileNav.classList.toggle('translate-x-full');
         });
         
@@ -31,6 +35,7 @@ function initMobileMenu() {
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
                 mobileNav.classList.add('translate-x-full');
+                navToggle.classList.remove('active');
             });
         });
         
@@ -38,6 +43,7 @@ function initMobileMenu() {
         document.addEventListener('click', function(event) {
             if (!mobileNav.contains(event.target) && !navToggle.contains(event.target)) {
                 mobileNav.classList.add('translate-x-full');
+                navToggle.classList.remove('active');
             }
         });
     }
