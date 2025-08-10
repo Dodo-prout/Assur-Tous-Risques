@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez l'équipe d'Assur Tous Risques, experts en assurance pour négociants automobiles et W Garages depuis 2009.">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#aa1520',
+                        'primary-light': '#c74451',
+                        'primary-dark': '#8a1119'
+                    },
+                    backgroundImage: {
+                        'backgroundcard': "url('images/backgroundcard.jpg')",
+                        'contact': "url('images/photo contact.png')",
+                        'backgroundatout': "url('images/backgroundatout.png')",
+                        'hero': "url('images/backround hero.png')",
+                        'services': "url('images/backgroundcard.jpg')",
+                        'why-choose': "url('images/backgroundatout.png')"
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'slideInUp': 'slideInUp 0.6s ease forwards'
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        },
+                        slideInUp: {
+                            'from': { opacity: '0', transform: 'translateY(30px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    },
+                    transitionDelay: {
+                        '100': '100ms',
+                        '200': '200ms',
+                        '300': '300ms'
+                    },
+                    backdropBlur: {
+                        'xs': '2px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Navigation underline - non disponible en Tailwind */
+        .nav-underline {
+            position: relative;
+        }
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            height: 2px;
+            width: 0;
+            background-color: #aa1520;
+            transition: width 0.3s ease;
+        }
+        .nav-underline:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger menu animation - transformations complexes */
+        #nav-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        #nav-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        #nav-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Keyframes personnalisées pour les blobs */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+    </style>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <title>Notre Équipe - Assur Tous Risques</title>
+    
+    <!-- Script pour charger les composants -->
+    <script src="components.js"></script>
+</head>
+<body class="bg-white text-gray-900">
+    
+    <!-- Header avec menu hamburger animé -->
+    <header class="fixed inset-x-0 top-0 z-50 bg-white shadow-lg border-b border-gray-200 transition-colors">
+        <div class="mx-auto max-w-7xl flex items-center justify-between px-6 py-3">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 text-gray-900">
+                <img src="images/Logo ATR.png" alt="Logo Assur Tous Risques" class="w-8 h-8">
+                <span class="font-semibold text-lg tracking-tight">
+                    <span class="text-primary">ASSUR</span> <span class="text-gray-500">TOUS</span> <span class="text-primary">RISQUES</span>
+                </span>
+            </a>
+
+            <!-- Menu desktop -->
+            <nav class="hidden lg:flex gap-8">
+                <a href="index.html#accueil" class="nav-underline text-gray-700 hover:text-primary transition">Accueil</a>
+                <a href="nos-services.html" class="nav-underline text-gray-700 hover:text-primary transition">Services</a>
+                <a href="notre-equipe.html" class="nav-underline text-primary font-medium transition">Notre équipe</a>
+                <a href="index.html#apropos" class="nav-underline text-gray-700 hover:text-primary transition">À propos</a>
+                <a href="index.html#contact" class="nav-underline text-gray-700 hover:text-primary transition">Contact</a>
+            </nav>
+
+            <!-- Téléphone + bouton desktop -->
+            <div class="hidden lg:flex items-center gap-4">
+                <span class="flex items-center gap-1 text-sm text-gray-600">
+                    <i class="fas fa-phone w-4 h-4"></i> 01 23 45 67 89
+                </span>
+                <a href="index.html#contact" class="bg-primary text-white px-5 py-2 rounded hover:bg-primary-dark shadow transition">Demander un devis</a>
+            </div>
+
+            <!-- Burger animé (mobile) -->
+            <button id="nav-toggle" class="lg:hidden p-2 rounded hover:bg-gray-200/50 transition relative w-10 h-10 flex flex-col justify-center items-center">
+                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out origin-center"></span>
+                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out mt-1 origin-center"></span>
+                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out mt-1 origin-center"></span>
+            </button>
+        </div>
+
+        <!-- Menu mobile -->
+        <nav id="mobile-nav" class="fixed inset-y-0 right-0 w-72 max-w-full bg-white shadow-2xl translate-x-full transition-transform lg:hidden flex flex-col pt-24 px-6 gap-6 border-l border-gray-200">
+            <a href="index.html#accueil" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Accueil</a>
+            <a href="nos-services.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Services</a>
+            <a href="notre-equipe.html" class="text-primary text-lg font-semibold transition py-2 border-b border-gray-100">Notre équipe</a>
+            <a href="index.html#apropos" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">À propos</a>
+            <a href="index.html#contact" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Contact</a>
+            <a href="index.html#contact" class="bg-primary text-white px-5 py-3 rounded-lg hover:bg-primary-dark shadow-lg transition mt-4 text-center font-semibold">Demander un devis</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section Notre Équipe -->
+    <section class="bg-hero bg-cover bg-center pt-16 pb-20 relative min-h-screen before:content-[''] before:absolute before:inset-0 before:bg-slate-50/70 before:z-10">
+        <!-- Animated Background -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none select-none opacity-20 z-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+            <defs>
+                <radialGradient id="blob1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#aa1520" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="blob2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#c74451" stop-opacity="0.6" />
+                    <stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+                </radialGradient>
+            </defs>
+            <circle class="animate-blob" cx="200" cy="300" r="200" fill="url(#blob1)" />
+            <circle class="animate-blob" cx="600" cy="200" r="150" fill="url(#blob2)" style="animation-delay: 2s;" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 xl:py-24 z-20">
+            <div class="flex flex-col items-center min-h-[80vh] justify-center text-center">
+                <!-- Contenu centré -->
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-3 sm:mb-4">Faites connaissance</p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold tracking-tight leading-tight mb-4 sm:mb-6">
+                        Notre Équipe d'Experts
+                    </h1>
+                    <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto">
+                        Depuis plus de 15 ans, une équipe de 4 professionnels passionnés vous accompagne dans la protection de votre activité automobile.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12">
+                        <a href="#team" class="bg-gradient-to-br from-primary to-primary-dark text-white px-6 py-3 rounded-lg hover:-translate-y-0.5 shadow-lg hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center text-sm sm:text-base">
+                            <i class="fas fa-users mr-2"></i>
+                            Découvrir l'équipe
+                        </a>
+                        <a href="index.html#contact" class="border-2 border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-white hover:-translate-y-0.5 transition-all duration-300 text-center text-sm sm:text-base">
+                            Nous contacter
+                        </a>
+                    </div>
+
+                    <!-- Statistiques équipe -->
+                    <div class="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center max-w-2xl mx-auto">
+                        <div class="border-r border-gray-300 last:border-r-0 pr-4 sm:pr-6 lg:pr-8">
+                            <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">4</p>
+                            <p class="text-xs sm:text-sm lg:text-base text-gray-600">Experts dédiés</p>
+                        </div>
+                        <div class="border-r border-gray-300 last:border-r-0 pr-4 sm:pr-6 lg:pr-8">
+                            <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">15+</p>
+                            <p class="text-xs sm:text-sm lg:text-base text-gray-600">Années d'expérience</p>
+                        </div>
+                        <div>
+                            <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">5000+</p>
+                            <p class="text-xs sm:text-sm lg:text-base text-gray-600">Clients accompagnés</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Équipe -->
+    <section id="team" class="py-20 relative overflow-hidden min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center mb-16">
+                <p class="text-primary font-semibold text-sm uppercase tracking-wide mb-4">L'expertise humaine</p>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Des professionnels à votre service</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Notre équipe de 4 professionnels combine expertise technique et relation humaine pour vous offrir un accompagnement personnalisé.
+                </p>
+            </div>
+
+            <!-- Grille des membres d'équipe -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Membre 1 : Directeur -->
+                <div data-team-card class="group relative bg-white/10 backdrop-blur-md border border-white/20 shadow-md overflow-hidden transition-all duration-500 ease-out hover:-translate-y-2.5 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/15 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/10 before:to-white/5 before:pointer-events-none before:z-10">
+                    <div class="relative">
+                        <!-- Photo du membre -->
+                        <div class="w-full h-64 bg-gradient-to-br from-primary to-primary-dark relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-white text-6xl font-bold opacity-80">JS</div>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent h-20"></div>
+                        </div>
+                        <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="relative p-6 text-center z-20">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Philippe LETHIEC</h3>
+                        <p class="text-primary font-medium mb-3">Courtier en assurance</p>
+                        <p class="text-sm text-gray-600 mb-4">Fondateur du cabinet Assur-Tous-Risques</p>
+                        <div class="flex justify-center gap-3">
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                                <i class="fas fa-envelope text-xs"></i>
+                            </div>
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                                <i class="fas fa-phone text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membre 2 : Responsable Commercial -->
+                <div data-team-card class="group relative bg-white/10 backdrop-blur-md border border-white/20 shadow-md overflow-hidden transition-all duration-500 ease-out hover:-translate-y-2.5 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/15 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/10 before:to-white/5 before:pointer-events-none before:z-10">
+                    <div class="relative">
+                        <!-- Photo du membre -->
+                        <div class="w-full h-64 bg-gradient-to-br from-primary-light to-primary relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-white text-6xl font-bold opacity-80">ML</div>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent h-20"></div>
+                        </div>
+                        <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="relative p-6 text-center z-20">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Emmanuel LETHIEC</h3>
+                        <p class="text-primary font-medium mb-3">Commercial</p>
+                        <p class="text-sm text-gray-600 mb-4">Spécialiste des solutions W Garage et négociants automobiles</p>
+                        <div class="flex justify-center gap-3">
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                                <i class="fas fa-envelope text-xs"></i>
+                            </div>
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                                <i class="fas fa-phone text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membre 3 : Conseiller Senior -->
+                <div data-team-card class="group relative bg-white/10 backdrop-blur-md border border-white/20 shadow-md overflow-hidden transition-all duration-500 ease-out hover:-translate-y-2.5 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/15 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/10 before:to-white/5 before:pointer-events-none before:z-10">
+                    <div class="relative">
+                        <!-- Photo du membre -->
+                        <div class="w-full h-64 bg-gradient-to-br from-primary to-primary-light relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-white text-6xl font-bold opacity-80">AD</div>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent h-20"></div>
+                        </div>
+                        <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="relative p-6 text-center z-20">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Dora BLANCHARD</h3>
+                        <p class="text-primary font-medium mb-3">Collaboratrice d'agence</p>
+                        <p class="text-sm text-gray-600 mb-4">Accompagnement et suivi personnalisé des dossiers</p>
+                        <div class="flex justify-center gap-3">
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                                <i class="fas fa-envelope text-xs"></i>
+                            </div>
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                                <i class="fas fa-phone text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Membre 4 : Gestionnaire Sinistres -->
+                <div data-team-card class="group relative bg-white/10 backdrop-blur-md border border-white/20 shadow-md overflow-hidden transition-all duration-500 ease-out hover:-translate-y-2.5 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/15 before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/10 before:to-white/5 before:pointer-events-none before:z-10">
+                    <div class="relative">
+                        <!-- Photo du membre -->
+                        <div class="w-full h-64 bg-gradient-to-br from-primary-dark to-primary relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-white text-6xl font-bold opacity-80">SM</div>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent h-20"></div>
+                        </div>
+                        <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="relative p-6 text-center z-20">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Chrystelle BRUN</h3>
+                        <p class="text-primary font-medium mb-3">Gestionnaire Sinistres</p>
+                        <p class="text-sm text-gray-600 mb-4">Assistance et gestion sur mesure des sinistres</p>
+                        <div class="flex justify-center gap-3">
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                                <i class="fas fa-envelope text-xs"></i>
+                            </div>
+                            <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer">
+                                <i class="fas fa-phone text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Valeurs -->
+    <section class="py-16 relative min-h-screen flex items-center" style="background-image: url('images/photo notre équipe.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <!-- Fond flou sur l'arrière-plan -->
+        <div class="absolute inset-0 backdrop-blur-sm bg-white/40"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+            <div class="text-center mb-16">
+                <p class="text-primary font-bold text-sm uppercase tracking-wide mb-4">Nos valeurs</p>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Ce qui nous anime au quotidien</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Valeur 1 -->
+                <div class="group relative overflow-hidden bg-white/90 backdrop-blur-md p-8 text-center shadow-xl border border-gray-200 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2">
+                    <!-- Effet de reflet -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/40 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
+                            <i class="fas fa-handshake text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors duration-300">Proximité</h3>
+                        <p class="text-gray-700 font-medium">Une relation humaine privilégiée avec nos clients, basée sur l'écoute et la confiance mutuelle.</p>
+                    </div>
+                </div>
+
+                <!-- Valeur 2 -->
+                <div class="group relative overflow-hidden bg-white/90 backdrop-blur-md p-8 text-center shadow-xl border border-gray-200 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2">
+                    <!-- Effet de reflet -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/40 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
+                            <i class="fas fa-graduation-cap text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors duration-300">Expertise</h3>
+                        <p class="text-gray-700 font-medium">Une connaissance approfondie du secteur automobile et des risques spécifiques aux professionnels.</p>
+                    </div>
+                </div>
+
+                <!-- Valeur 3 -->
+                <div class="group relative overflow-hidden bg-white/90 backdrop-blur-md p-8 text-center shadow-xl border border-gray-200 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:scale-105 hover:-translate-y-2">
+                    <!-- Effet de reflet -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/40 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
+                            <i class="fas fa-shield-alt text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors duration-300">Fiabilité</h3>
+                        <p class="text-gray-700 font-medium">Des solutions d'assurance solides et un engagement constant dans l'accompagnement de nos clients.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="py-8 pb-24 relative overflow-hidden">
+        <!-- Animated Background -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none select-none opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+            <defs>
+                <radialGradient id="cta-blob1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#aa1520" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="cta-blob2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#c74451" stop-opacity="0.6" />
+                    <stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+                </radialGradient>
+            </defs>
+            <circle class="animate-blob" cx="200" cy="300" r="200" fill="url(#cta-blob1)" />
+            <circle class="animate-blob animation-delay-2" cx="600" cy="200" r="150" fill="url(#cta-blob2)" />
+        </svg>
+
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6 whitespace-nowrap">
+                Prêt à faire confiance à notre équipe ?
+            </h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                Contactez-nous dès aujourd'hui pour discuter de vos besoins en assurance avec nos experts.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html#contact" class="bg-gradient-to-br from-primary to-primary-dark text-white px-8 py-4 rounded-lg hover:-translate-y-0.5 shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:scale-[1.02] inline-flex items-center justify-center">
+                    <i class="fas fa-phone mr-2"></i>
+                    Nous contacter
+                </a>
+                <a href="nos-services.html" class="border-2 border-primary text-primary px-8 py-4 rounded-lg hover:bg-primary hover:text-white hover:-translate-y-0.5 transition-all duration-300 inline-flex items-center justify-center">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Découvrir nos services
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer chargé dynamiquement -->
+    <div id="footer"></div>
+
+    <script>
+        // Inclure le script des composants
+        const script = document.createElement('script');
+        script.src = 'components.js';
+        document.head.appendChild(script);
+        
+        // Charger les composants
+        // Les composants se chargent automatiquement via components.js
+
+        // Initialisation du menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('nav-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            if (navToggle && mobileNav) {
+                navToggle.addEventListener('click', function() {
+                    // Toggle de la classe active pour l'animation du hamburger
+                    navToggle.classList.toggle('active');
+                    
+                    // Toggle du menu mobile
+                    mobileNav.classList.toggle('translate-x-full');
+                });
+                
+                // Fermer le menu quand on clique sur un lien
+                const mobileLinks = mobileNav.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNav.classList.add('translate-x-full');
+                        navToggle.classList.remove('active');
+                    });
+                });
+                
+                // Fermer le menu quand on clique à l'extérieur
+                document.addEventListener('click', function(event) {
+                    if (!mobileNav.contains(event.target) && !navToggle.contains(event.target)) {
+                        mobileNav.classList.add('translate-x-full');
+                        navToggle.classList.remove('active');
+                    }
+                });
+            }
+
+            // Animation d'apparition des cartes au scroll avec classes Tailwind
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-12');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                    }
+                });
+            }, observerOptions);
+
+            // Observer toutes les cartes d'équipe avec des délais échelonnés
+            document.querySelectorAll('[data-team-card]').forEach((card, index) => {
+                card.classList.add('opacity-0', 'translate-y-12', 'transition-all', 'duration-600', 'ease-out');
+                card.style.transitionDelay = `${index * 100}ms`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

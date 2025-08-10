@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez tous nos services d'assurance spécialisés pour négociants automobiles et garages : RC Pro, W Garage, Multirisques et bien plus.">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#aa1520',
+                        'primary-light': '#c74451',
+                        'primary-dark': '#8a1119'
+                    },
+                    backgroundImage: {
+                        'backgroundcard': "url('images/backgroundcard.jpg')",
+                        'contact': "url('images/photo contact.png')",
+                        'backgroundatout': "url('images/backgroundatout.png')",
+                        'hero': "url('images/backround hero.png')",
+                        'services': "url('images/backgroundcard.jpg')",
+                        'why-choose': "url('images/backgroundatout.png')"
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'slideInUp': 'slideInUp 0.6s ease forwards'
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        },
+                        slideInUp: {
+                            'from': { opacity: '0', transform: 'translateY(30px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    },
+                    transitionDelay: {
+                        '100': '100ms',
+                        '200': '200ms',
+                        '300': '300ms'
+                    },
+                    backdropBlur: {
+                        'xs': '2px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Navigation underline - non disponible en Tailwind */
+        .nav-underline {
+            position: relative;
+        }
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            height: 2px;
+            width: 0;
+            background-color: #aa1520;
+            transition: width 0.3s ease;
+        }
+        .nav-underline:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger menu animation - transformations complexes */
+        #nav-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        #nav-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        #nav-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Keyframes personnalisées pour les blobs */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        /* Glass card effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <title>Nos Services - Assur Tous Risques</title>
+    
+    <!-- Script pour charger les composants -->
+    <script src="components.js"></script>
+</head>
+<body class="bg-white text-gray-900">
+    
+    <!-- Header avec menu hamburger animé -->
+    <header class="fixed inset-x-0 top-0 z-50 bg-white shadow-lg border-b border-gray-200 transition-colors">
+        <div class="mx-auto max-w-7xl flex items-center justify-between px-6 py-3">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 text-gray-900">
+                <img src="images/Logo ATR.png" alt="Logo Assur Tous Risques" class="w-8 h-8">
+                <span class="font-semibold text-lg tracking-tight">
+                    <span class="text-primary">ASSUR</span> <span class="text-gray-500">TOUS</span> <span class="text-primary">RISQUES</span>
+                </span>
+            </a>
+
+            <!-- Menu desktop -->
+            <nav class="hidden lg:flex gap-8">
+                <a href="index.html#accueil" class="nav-underline text-gray-700 hover:text-primary transition">Accueil</a>
+                <a href="nos-services.html" class="nav-underline text-primary font-medium transition">Services</a>
+                <a href="notre-equipe.html" class="nav-underline text-gray-700 hover:text-primary transition">Notre équipe</a>
+                <a href="index.html#apropos" class="nav-underline text-gray-700 hover:text-primary transition">À propos</a>
+                <a href="index.html#contact" class="nav-underline text-gray-700 hover:text-primary transition">Contact</a>
+            </nav>
+
+            <!-- Téléphone + bouton desktop -->
+            <div class="hidden lg:flex items-center gap-4">
+                <span class="flex items-center gap-1 text-sm text-gray-600">
+                    <i class="fas fa-phone w-4 h-4"></i> 01 23 45 67 89
+                </span>
+                <a href="index.html#contact" class="bg-primary text-white px-5 py-2 rounded hover:bg-primary-dark shadow transition">Demander un devis</a>
+            </div>
+
+            <!-- Burger animé (mobile) -->
+            <button id="nav-toggle" class="lg:hidden p-2 rounded hover:bg-gray-200/50 transition relative w-10 h-10 flex flex-col justify-center items-center">
+                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out origin-center"></span>
+                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out mt-1 origin-center"></span>
+                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out mt-1 origin-center"></span>
+            </button>
+        </div>
+
+        <!-- Menu mobile -->
+        <nav id="mobile-nav" class="fixed inset-y-0 right-0 w-72 max-w-full bg-white shadow-2xl translate-x-full transition-transform lg:hidden flex flex-col pt-24 px-6 gap-6 border-l border-gray-200">
+            <a href="index.html#accueil" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Accueil</a>
+            <a href="nos-services.html" class="text-primary text-lg font-semibold transition py-2 border-b border-gray-100">Services</a>
+            <a href="notre-equipe.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Notre équipe</a>
+            <a href="index.html#apropos" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">À propos</a>
+            <a href="index.html#contact" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Contact</a>
+            <a href="index.html#contact" class="bg-primary text-white px-5 py-3 rounded-lg hover:bg-primary-dark shadow-lg transition mt-4 text-center font-semibold">Demander un devis</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section Services -->
+    <section class="bg-hero bg-cover bg-center pt-16 pb-20 relative min-h-screen before:content-[''] before:absolute before:inset-0 before:bg-slate-50/70 before:z-10">
+        <!-- Animated Background -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none select-none opacity-20 z-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+            <defs>
+                <radialGradient id="blob1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#aa1520" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="blob2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#c74451" stop-opacity="0.6" />
+                    <stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+                </radialGradient>
+            </defs>
+            <circle class="animate-blob" cx="200" cy="300" r="200" fill="url(#blob1)" />
+            <circle class="animate-blob" cx="600" cy="200" r="150" fill="url(#blob2)" style="animation-delay: 2s;" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 xl:py-24 z-20">
+            <div class="flex flex-col items-center min-h-[80vh] justify-center text-center">
+                <!-- Contenu centré -->
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-3 sm:mb-4">Solutions d'assurance</p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold tracking-tight leading-tight mb-4 sm:mb-6">
+                        Nos Services Spécialisés
+                    </h1>
+                    <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto">
+                        Des solutions d'assurance sur mesure pour tous les professionnels de l'automobile : négociants, garages, concessionnaires.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12">
+                        <a href="#services-detail" class="bg-gradient-to-br from-primary to-primary-dark text-white px-6 py-3 rounded-lg hover:-translate-y-0.5 shadow-lg hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center text-sm sm:text-base">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            Découvrir nos garanties
+                        </a>
+                        <a href="index.html#contact" class="border-2 border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-white hover:-translate-y-0.5 transition-all duration-300 text-center text-sm sm:text-base">
+                            Demander un devis
+                        </a>
+                    </div>
+
+                    <!-- Statistiques services -->
+                    <div class="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center max-w-2xl mx-auto">
+                        <div class="border-r border-gray-300 last:border-r-0 pr-4 sm:pr-6 lg:pr-8">
+                            <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">8+</p>
+                            <p class="text-xs sm:text-sm lg:text-base text-gray-600">Services proposés</p>
+                        </div>
+                        <div class="border-r border-gray-300 last:border-r-0 pr-4 sm:pr-6 lg:pr-8">
+                            <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">100%</p>
+                            <p class="text-xs sm:text-sm lg:text-base text-gray-600">Sur mesure</p>
+                        </div>
+                        <div>
+                            <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">24h/7j</p>
+                            <p class="text-xs sm:text-sm lg:text-base text-gray-600">Assistance disponible</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services Détaillés - Partie 1 : Négociants Automobiles -->
+    <section id="services-detail-1" class="py-20 relative overflow-hidden" style="background-image: url('images/photo-service-1.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+            <div class="text-center mb-16">
+                <p class="text-primary font-semibold text-sm uppercase tracking-wide mb-4">Notre expertise</p>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Nos Solutions d'Assurance</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Des solutions spécialement adaptées à chaque professionnel de l'automobile
+                </p>
+            </div>
+
+            <!-- Section Négociants Automobiles -->
+            <div class="mb-12">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mr-6">
+                        <i class="fas fa-car text-primary text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">Négociants Automobiles</h3>
+                        <p class="text-gray-600 text-lg">Protection complète de votre activité de vente</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- W Garage -->
+                    <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-shield-alt text-primary mr-3"></i>
+                            Assurance W Garage
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Véhicules en stock et vente
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Véhicules clients confiés
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Garantie essais et démonstrations
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Vol et vandalisme sur parc
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- RC Pro -->
+                    <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-balance-scale text-primary mr-3"></i>
+                            Responsabilité Civile Pro
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Dommages corporels causés
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Dommages matériels
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Défense pénale et recours
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Protection environnementale
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Homme Clé -->
+                    <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-user-tie text-primary mr-3"></i>
+                            Assurance Homme Clé
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Perte de chiffre d'affaires
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Frais de remplacement
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Charges fixes couvertes
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Indisponibilité temporaire
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services Détaillés - Partie 2 : Locaux et Équipements -->
+    <section id="services-detail-2" class="py-20 relative overflow-hidden" style="background-image: url('images/photo-service-2.png'); background-size: cover; background-position: -20% center; background-repeat: no-repeat;">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+            <!-- Section Locaux et Équipements -->
+            <div class="mb-12">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mr-6">
+                        <i class="fas fa-building text-primary text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">Locaux et Équipements</h3>
+                        <p class="text-gray-600 text-lg">Sécurisation de vos infrastructures</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Multirisques -->
+                    <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-home text-primary mr-3"></i>
+                            Multirisques Professionnelle
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Incendie, explosion, foudre
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Dégâts des eaux et gel
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Vol, tentative et vandalisme
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Pertes d'exploitation
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Équipements électroniques
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Bris de machines et outillage
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Cyber Protection -->
+                    <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-lock text-primary mr-3"></i>
+                            Cyber Protection
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Protection contre cyberattaques
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Récupération de données
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Assistance RGPD
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Interruption d'activité cyber
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Frais de notification
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Gestion de crise e-réputation
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services Détaillés - Partie 3 : Protection Juridique -->
+    <section id="services-detail-3" class="py-20 relative overflow-hidden" style="background-image: url('images/photo-service-3.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20">
+            <!-- Section Protection Juridique -->
+            <div class="mb-12">
+                <div class="flex items-center mb-8">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mr-6">
+                        <i class="fas fa-gavel text-primary text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900">Protection Juridique</h3>
+                        <p class="text-gray-600 text-lg">Accompagnement dans tous vos litiges</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Assistance Juridique -->
+                    <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-phone-alt text-primary mr-3"></i>
+                            Assistance 24h/7j
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Conseil juridique immédiat
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Rédaction d'actes courants
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Information sur vos droits
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Défense Pénale -->
+                    <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-user-shield text-primary mr-3"></i>
+                            Défense Pénale
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Prise en charge avocat
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Frais de procédure
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Expertise contradictoire
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Litiges Commerciaux -->
+                    <div class="bg-white/50 backdrop-blur-sm p-6 rounded-xl border border-gray-200">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3 flex items-center">
+                            <i class="fas fa-handshake text-primary mr-3"></i>
+                            Litiges Commerciaux
+                        </h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Recouvrement créances
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Litiges fournisseurs
+                            </li>
+                            <li class="flex items-start">
+                                <span class="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                Médiation et arbitrage
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="py-16 pb-24 relative overflow-hidden">
+        <!-- Animated Background -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none select-none opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+            <defs>
+                <radialGradient id="cta-blob1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#aa1520" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="cta-blob2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#c74451" stop-opacity="0.6" />
+                    <stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+                </radialGradient>
+            </defs>
+            <circle class="animate-blob" cx="200" cy="300" r="200" fill="url(#cta-blob1)" />
+            <circle class="animate-blob animation-delay-2" cx="600" cy="200" r="150" fill="url(#cta-blob2)" />
+        </svg>
+
+        <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Contenu texte (gauche) -->
+                <div class="text-center lg:text-left">
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                        Prêt à protéger votre activité ?
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Contactez-nous pour une étude personnalisée et découvrez la solution d'assurance adaptée à vos besoins. Notre équipe d'experts vous accompagne dans toutes vos démarches.
+                    </p>
+                    <div class="text-gray-700 space-y-4">
+                        <div class="flex items-center justify-center lg:justify-start">
+                            <i class="fas fa-phone text-primary mr-3"></i>
+                            <span class="font-medium">06 99 99 99 99</span>
+                        </div>
+                        <div class="flex items-center justify-center lg:justify-start">
+                            <i class="fas fa-envelope text-primary mr-3"></i>
+                            <span class="font-medium">contact@assuртousrisques.fr</span>
+                        </div>
+                        <div class="flex items-center justify-center lg:justify-start">
+                            <i class="fas fa-map-marker-alt text-primary mr-3"></i>
+                            <span class="font-medium">Votre région</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulaire de contact (droite) -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 shadow-xl">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
+                        Demandez votre devis gratuit
+                    </h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-700 mb-2">
+                                Nom de la société <span class="text-primary">*</span>
+                            </label>
+                            <input type="text" id="company" name="company" required 
+                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                                   placeholder="Nom de la société">
+                        </div>
+                        <div>
+                            <label for="siret" class="block text-sm font-medium text-gray-700 mb-2">
+                                SIRET
+                            </label>
+                            <input type="text" id="siret" name="siret" 
+                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                                   placeholder="123 456 789 00000">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                                Téléphone <span class="text-primary">*</span>
+                            </label>
+                            <input type="tel" id="phone" name="phone" required 
+                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                                   placeholder="06 12 34 56 78">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                                Email <span class="text-primary">*</span>
+                            </label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                                   placeholder="contact@email.com">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+                                Message <span class="text-primary">*</span>
+                            </label>
+                            <textarea id="message" name="message" rows="3" required 
+                                      class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 bg-white/70 backdrop-blur-sm resize-none"
+                                      placeholder="Décrivez vos besoins..."></textarea>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-gradient-to-br from-primary to-primary-dark text-white px-8 py-4 rounded-lg font-semibold hover:-translate-y-0.5 shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:scale-[1.02]">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Envoyer la demande
+                        </button>
+                        <p class="text-sm text-gray-600 text-center font-medium">Nous vous répondrons sous 24h.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer chargé dynamiquement -->
+    <div id="footer"></div>
+
+    <script>
+        // Inclure le script des composants
+        const script = document.createElement('script');
+        script.src = 'components.js';
+        document.head.appendChild(script);
+        
+        // Initialisation du menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('nav-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            if (navToggle && mobileNav) {
+                navToggle.addEventListener('click', function() {
+                    // Toggle de la classe active pour l'animation du hamburger
+                    navToggle.classList.toggle('active');
+                    
+                    // Toggle du menu mobile
+                    mobileNav.classList.toggle('translate-x-full');
+                });
+                
+                // Fermer le menu quand on clique sur un lien
+                const mobileLinks = mobileNav.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNav.classList.add('translate-x-full');
+                        navToggle.classList.remove('active');
+                    });
+                });
+                
+                // Fermer le menu quand on clique à l'extérieur
+                document.addEventListener('click', function(event) {
+                    if (!mobileNav.contains(event.target) && !navToggle.contains(event.target)) {
+                        mobileNav.classList.add('translate-x-full');
+                        navToggle.classList.remove('active');
+                    }
+                });
+            }
+
+            // Animation d'apparition des cartes au scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observer toutes les cartes de services avec des délais échelonnés
+            document.querySelectorAll('.glass-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                card.style.transitionDelay = `${index * 100}ms`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
