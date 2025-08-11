@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Questions Fréquentes | Assur Tous Risques</title>
+    <meta name="description" content="Toutes les réponses à vos questions sur nos assurances automobiles professionnelles : souscription, garanties, sinistres et tarifs.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#aa1520',
+                        'primary-dark': '#8b111a',
+                        'primary-light': '#c74451'
+                    },
+                    backgroundImage: {
+                        'hero': "url('images/backround hero.png')",
+                        'contact': "url('images/photo contact.png')",
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles personnalisés -->
+    <style>
+        .nav-underline {
+            position: relative;
+        }
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            height: 2px;
+            width: 0;
+            background-color: #aa1520;
+            transition: width 0.3s ease;
+        }
+        .nav-underline:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger menu animation */
+        #nav-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        #nav-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        #nav-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Keyframes pour les blobs animés */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(170, 21, 32, 0.1);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.open {
+            max-height: 500px;
+            padding-top: 1rem;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-toggle.rotate {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Navigation -->
+    <header class="fixed inset-x-0 top-0 z-50 bg-white shadow-lg border-b border-gray-200 transition-colors">
+        <div class="mx-auto max-w-7xl flex items-center justify-between px-6 py-3">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 text-gray-900">
+                <img src="images/Logo ATR.png" alt="Logo Assur Tous Risques" class="w-8 h-8">
+                <span class="font-semibold text-lg tracking-tight">
+                    <span class="text-primary">ASSUR</span> <span class="text-gray-500">TOUS</span> <span class="text-primary">RISQUES</span>
+                </span>
+            </a>
+
+            <!-- Menu desktop -->
+            <nav class="hidden lg:flex gap-8">
+                <a href="index.html#accueil" class="nav-underline text-gray-700 hover:text-primary transition">Accueil</a>
+                <a href="nos-services.html" class="nav-underline text-gray-700 hover:text-primary transition">Services</a>
+                <a href="notre-equipe.html" class="nav-underline text-gray-700 hover:text-primary transition">Notre équipe</a>
+                <a href="faq.html" class="nav-underline text-primary font-medium transition">FAQ</a>
+                <a href="index.html#contact" class="nav-underline text-gray-700 hover:text-primary transition">Contact</a>
+            </nav>
+
+            <!-- Téléphone + bouton desktop -->
+            <div class="hidden lg:flex items-center gap-4">
+                <span class="flex items-center gap-1 text-sm text-gray-600">
+                    <i class="fas fa-phone w-4 h-4"></i> 01 23 45 67 89
+                </span>
+                <a href="demande-devis.html" class="bg-primary text-white px-5 py-2 rounded hover:bg-primary-dark shadow transition">Demander un devis</a>
+            </div>
+
+            <!-- Burger animé (mobile) -->
+            <button id="nav-toggle" class="lg:hidden p-2 rounded hover:bg-gray-200/50 transition relative w-10 h-10 flex flex-col justify-center items-center">
+                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out origin-center"></span>
+                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out mt-1 origin-center"></span>
+                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out mt-1 origin-center"></span>
+            </button>
+        </div>
+
+        <!-- Menu mobile -->
+        <nav id="mobile-nav" class="fixed inset-y-0 right-0 w-72 max-w-full bg-white shadow-2xl translate-x-full transition-transform lg:hidden flex flex-col pt-24 px-6 gap-6 border-l border-gray-200">
+            <a href="index.html#accueil" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Accueil</a>
+            <a href="nos-services.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Services</a>
+            <a href="notre-equipe.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Notre équipe</a>
+            <a href="faq.html" class="text-primary text-lg font-semibold transition py-2 border-b border-gray-100">FAQ</a>
+            <a href="index.html#contact" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Contact</a>
+            <a href="demande-devis.html" class="bg-primary text-white px-5 py-3 rounded-lg hover:bg-primary-dark shadow-lg transition mt-4 text-center font-semibold">Demander un devis</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section FAQ -->
+    <section class="bg-hero bg-cover bg-center pt-16 pb-0 relative min-h-screen before:content-[''] before:absolute before:inset-0 before:bg-slate-50/70 before:z-10">
+        <!-- Animated Background -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none select-none opacity-20 z-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+            <defs>
+                <radialGradient id="blob1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#aa1520" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+                </radialGradient>
+                <radialGradient id="blob2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                    <stop offset="0%" stop-color="#c74451" stop-opacity="0.6" />
+                    <stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+                </radialGradient>
+            </defs>
+            <circle class="animate-blob" cx="200" cy="300" r="200" fill="url(#blob1)" />
+            <circle class="animate-blob" cx="600" cy="200" r="150" fill="url(#blob2)" style="animation-delay: 2s;" />
+        </svg>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 z-20">
+            <div class="flex flex-col items-center min-h-screen justify-center text-center">
+                <!-- Contenu centré -->
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-3 sm:mb-4">Questions Fréquentes</p>
+                    <h1 class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold tracking-tight leading-tight mb-4 sm:mb-6">
+                        FAQ
+                    </h1>
+                    <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto">
+                        Toutes les réponses aux questions les plus courantes sur nos assurances automobiles professionnelles.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12">
+                        <a href="#faq-section" class="bg-gradient-to-br from-primary to-primary-dark text-white px-6 py-3 rounded-lg hover:-translate-y-0.5 shadow-lg hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center text-sm sm:text-base">
+                            <i class="fas fa-question-circle mr-2"></i>
+                            Consulter les FAQ
+                        </a>
+                        <a href="index.html#contact" class="border-2 border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-white hover:-translate-y-0.5 transition-all duration-300 text-center text-sm sm:text-base">
+                            Poser une question
+                        </a>
+                    </div>
+
+                    <!-- Statistiques FAQ -->
+                    <div class="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center max-w-2xl mx-auto">
+                        <div class="border-r border-gray-300 last:border-r-0 pr-4 sm:pr-6 lg:pr-8">
+                            <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">15+</p>
+                            <p class="text-xs sm:text-sm lg:text-base text-gray-600">Questions répondues</p>
+                        </div>
+                        <div class="border-r border-gray-300 last:border-r-0 pr-4 sm:pr-6 lg:pr-8">
+                            <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">24h</p>
+                            <p class="text-xs sm:text-sm lg:text-base text-gray-600">Délai de réponse</p>
+                        </div>
+                        <div>
+                            <p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">100%</p>
+                            <p class="text-xs sm:text-sm lg:text-base text-gray-600">Questions traitées</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Flèche de navigation vers la section suivante -->
+        <div class="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-30">
+            <a href="#faq-section" class="flex items-center justify-center w-12 h-12 bg-primary rounded-full text-white hover:bg-primary-dark transition-colors duration-300 shadow-lg">
+                <i class="fas fa-chevron-down text-xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Section FAQ -->
+    <section id="faq-section" class="py-20 bg-gradient-to-b from-white via-gray-50 to-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-primary font-semibold text-sm uppercase tracking-wide mb-2">Aide & Support</p>
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Questions Fréquemment Posées</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Trouvez rapidement les réponses à vos questions sur nos assurances, garanties et services.
+                </p>
+            </div>
+
+            <!-- FAQ Items -->
+            <div class="space-y-4">
+                
+                <!-- Catégorie Souscription -->
+                <div id="souscription" class="mb-12 pb-8">
+                    <h3 class="text-xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fas fa-file-signature mr-2"></i>
+                        Souscription
+                    </h3>
+                    
+                    <!-- FAQ Item -->
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Comment souscrire une assurance négociant automobile ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    La souscription est simple et rapide : contactez-nous par téléphone ou email avec vos informations 
+                                    Nous établissons un devis personnalisé sous 24h. Une fois validé, votre couverture peut être effective immédiatement.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Quels documents sont nécessaires pour la souscription ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Vous devez fournir : votre extrait Kbis, votre carte d'identité ou titre de séjour, votre permis de conduire ainsi que votre RIB.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Quel est le délai pour obtenir une couverture ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Notre engagement : devis personnalisé sous 24h. Une fois le devis accepté et les documents fournis, 
+                                    la couverture peut être effective immédiatement pour répondre à vos besoins urgents.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Dois-je déjà avoir mes plaques W Garage pour souscrire ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Non, vous n'avez pas besoin d'avoir vos plaques W Garage avant de souscrire. Nous pouvons établir 
+                                    votre contrat d'assurance avant l'obtention de vos plaques. Cependant, les plaques W Garage sont 
+                                    nécessaires pour pouvoir utiliser légalement vos véhicules de stock et de démonstration.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Catégorie Garanties -->
+                <div id="garanties" class="mb-12 pb-8 border-t border-gray-100 pt-8">
+                    <h3 class="text-xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        Garanties
+                    </h3>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Que couvre l'assurance W Garage exactement ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    L'assurance W Garage couvre vos véhicules en stock, en démonstration et lors des essais. Elle inclut : 
+                                    vol, incendie, bris de glace, dommages collision, responsabilité civile lors des essais et vandalisme.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Les véhicules de clients sont-ils couverts ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Oui, notre garantie "véhicules confiés" couvre les voitures de vos clients pendant les réparations, 
+                                    le dépôt-vente ou toute autre prestation. La couverture s'active dès la prise en charge du véhicule.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">La protection juridique inclut-elle les litiges commerciaux ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Absolument. Notre protection juridique couvre les conflits avec les fournisseurs, clients, litiges URSSAF, 
+                                    prud'hommes et recouvrement. Vous bénéficiez de conseils illimités et de la prise en charge des frais d'avocat.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">A quoi sert la RC Professionnelle ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    La Responsabilité Civile Professionnelle vous protège contre les dommages causés à des tiers 
+                                    dans le cadre de votre activité. Elle couvre les erreurs, négligences ou fautes professionnelles 
+                                    qui pourraient engager votre responsabilité et celle de vos employés.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Le W Garage est-il obligatoire ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Le W Garage n'est pas obligatoire légalement, mais il est fortement recommandé pour les professionnels 
+                                    de l'automobile. Il protège votre stock de véhicules et couvre votre responsabilité lors des essais. 
+                                    Sans cette garantie, vous risquez des pertes financières importantes en cas de sinistre.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Catégorie Sinistres -->
+                <div id="sinistres" class="mb-12 pb-8 border-t border-gray-100 pt-8">
+                    <h3 class="text-xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fas fa-ambulance mr-2"></i>
+                        Sinistres
+                    </h3>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Comment déclarer un sinistre ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Contactez immédiatement notre service sinistre dédié au 06 99 99 99 99 (24h/24, 7j/7). 
+                                    Vous pouvez aussi déclarer en ligne ou par email. Gardez tous les documents : constat, photos, témoignages.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Quel est le délai de traitement d'un sinistre ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Notre équipe dédiée traite votre dossier sous 48h maximum. Pour les sinistres simples, 
+                                    l'indemnisation intervient sous 15 jours. Les cas complexes sont suivis avec un interlocuteur unique.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Y a-t-il une franchise sur les sinistres ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Les franchises varient selon le type de garantie et sont détaillées dans votre contrat. 
+                                    Nous proposons des options de franchise réduite pour optimiser votre couverture selon votre budget.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Questions Générales -->
+                <div class="mb-12 pb-8 border-t border-gray-100 pt-8">
+                    <h3 class="text-xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fas fa-question-circle mr-2"></i>
+                        Questions Générales
+                    </h3>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Proposez-vous un paiement mensuel ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Oui, nous proposons un paiement mensuel par prélèvement automatique sans frais supplémentaires. 
+                                    Vous pouvez aussi choisir le paiement trimestriel ou annuel avec des remises préférentielles.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Intervenez-vous dans toute la France ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Oui, nos assurances couvrent l'ensemble du territoire français métropolitain. 
+                                    Notre réseau d'experts et de réparateurs agréés vous garantit une prise en charge optimale partout en France.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                        <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-lg font-semibold text-gray-900 pr-4">Puis-je modifier mon contrat en cours d'année ?</h4>
+                                <i class="fas fa-plus faq-toggle text-primary text-xl flex-shrink-0"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p class="text-gray-600 leading-relaxed">
+                                    Bien sûr ! Vous pouvez ajouter ou retirer des véhicules, modifier vos garanties ou ajuster votre couverture 
+                                    en fonction de l'évolution de votre activité. Les modifications sont prises en compte immédiatement.
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Contact -->
+            <div class="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 mt-16 text-white text-center">
+                <div class="max-w-2xl mx-auto">
+                    <i class="fas fa-headset text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-4">Vous ne trouvez pas la réponse ?</h3>
+                    <p class="text-lg mb-6 opacity-90">
+                        Notre équipe d'experts est à votre disposition pour répondre à toutes vos questions personnalisées.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="tel:0699999999" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition flex items-center justify-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            06 99 99 99 99
+                        </a>
+                        <a href="index.html#contact" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition">
+                            Nous contacter
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer chargé dynamiquement -->
+    <div id="footer"></div>
+
+    <script>
+        // Inclure le script des composants
+        const script = document.createElement('script');
+        script.src = 'components.js';
+        script.onload = function() {
+            // S'assurer que le footer est chargé après que le script soit disponible
+            if (typeof loadComponent !== 'undefined') {
+                loadComponent('footer.html', 'footer');
+            }
+        };
+        document.head.appendChild(script);
+        
+        // Gestion FAQ
+        function toggleFAQ(button) {
+            const answer = button.querySelector('.faq-answer');
+            const toggle = button.querySelector('.faq-toggle');
+            
+            // Fermer les autres FAQ ouvertes
+            document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
+                if (openAnswer !== answer) {
+                    openAnswer.classList.remove('open');
+                    openAnswer.parentNode.querySelector('.faq-toggle').classList.remove('rotate');
+                }
+            });
+            
+            // Toggle la FAQ actuelle
+            answer.classList.toggle('open');
+            toggle.classList.toggle('rotate');
+        }
+        
+        // Scroll vers catégorie
+        function scrollToCategory(categoryId) {
+            document.getElementById(categoryId).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+        
+        // Initialisation du menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('nav-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            if (navToggle && mobileNav) {
+                navToggle.addEventListener('click', function() {
+                    // Toggle de la classe active pour l'animation du hamburger
+                    navToggle.classList.toggle('active');
+                    
+                    // Toggle du menu mobile
+                    mobileNav.classList.toggle('translate-x-full');
+                });
+                
+                // Fermer le menu quand on clique sur un lien
+                const mobileLinks = mobileNav.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNav.classList.add('translate-x-full');
+                        navToggle.classList.remove('active');
+                    });
+                });
+                
+                // Fermer le menu quand on clique à l'extérieur
+                document.addEventListener('click', function(event) {
+                    if (!mobileNav.contains(event.target) && !navToggle.contains(event.target)) {
+                        mobileNav.classList.add('translate-x-full');
+                        navToggle.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
