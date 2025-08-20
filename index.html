@@ -230,12 +230,14 @@
         @media (max-width: 767px) {
             .carousel-slide {
                 min-width: 100%;
-                padding: 0; /* Supprime le padding en mobile pour un centrage parfait au défilement */
+                padding: 0 16px; /* Ajoute des marges latérales pour réduire la largeur visuelle des cards */
+                display: flex;
+                justify-content: center;
             }
             /* Compense le padding horizontal du conteneur parent (px-4) pour aligner chaque slide au viewport */
             .carousel-container {
-                margin-left: -1rem;
-                margin-right: -1rem;
+                margin-left: 0;
+                margin-right: 0;
             }
         }
 
@@ -585,7 +587,7 @@
                 <div class="carousel-wrapper" id="servicesCarousel">
                                          <!-- Service 1: RC Pro -->
                      <div class="carousel-slide">
-                         <div class="glass-card p-4 sm:p-8 transform transition-all duration-300 hover:scale-[1.02] lg:hover:scale-[1.05] min-h-[260px] sm:min-h-[420px] lg:h-[480px] flex flex-col mx-auto w-full max-w-sm lg:max-w-none">
+                         <div class="glass-card p-4 sm:p-8 transform transition-all duration-300 hover:scale-[1.02] lg:hover:scale-[1.05] min-h-[260px] sm:min-h-[420px] lg:h-[480px] flex flex-col mx-auto w-auto max-w-[18rem] sm:max-w-sm lg:max-w-none">
                              <!-- Icône -->
                              <div class="text-center mb-4">
                                  <div class="w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm flex-shrink-0">
@@ -635,7 +637,7 @@
 
                                          <!-- Service 2: W Garage -->
                      <div class="carousel-slide">
-                         <div class="glass-card p-4 sm:p-8 transform transition-all duration-300 hover:scale-[1.02] lg:hover:scale-[1.05] min-h-[260px] sm:min-h-[420px] lg:h-[480px] flex flex-col mx-auto w-full max-w-sm lg:max-w-none">
+                         <div class="glass-card p-4 sm:p-8 transform transition-all duration-300 hover:scale-[1.02] lg:hover:scale-[1.05] min-h-[260px] sm:min-h-[420px] lg:h-[480px] flex flex-col mx-auto w-auto max-w-[18rem] sm:max-w-sm lg:max-w-none">
                              <!-- Icône -->
                              <div class="text-center mb-4">
                                  <div class="w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm flex-shrink-0">
@@ -685,7 +687,7 @@
 
                                          <!-- Service 3: Assurance Locaux -->
                      <div class="carousel-slide">
-                         <div class="glass-card p-4 sm:p-8 transform transition-all duration-300 hover:scale-[1.02] lg:hover:scale-[1.05] min-h-[260px] sm:min-h-[420px] lg:h-[480px] flex flex-col mx-auto w-full max-w-sm lg:max-w-none">
+                         <div class="glass-card p-4 sm:p-8 transform transition-all duration-300 hover:scale-[1.02] lg:hover:scale-[1.05] min-h-[260px] sm:min-h-[420px] lg:h-[480px] flex flex-col mx-auto w-auto max-w-[18rem] sm:max-w-sm lg:max-w-none">
                              <!-- Icône -->
                              <div class="text-center mb-4">
                                  <div class="w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm flex-shrink-0">
