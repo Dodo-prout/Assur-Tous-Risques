@@ -230,6 +230,12 @@
         @media (max-width: 767px) {
             .carousel-slide {
                 min-width: 100%;
+                padding: 0; /* Supprime le padding en mobile pour un centrage parfait au défilement */
+            }
+            /* Compense le padding horizontal du conteneur parent (px-4) pour aligner chaque slide au viewport */
+            .carousel-container {
+                margin-left: -1rem;
+                margin-right: -1rem;
             }
         }
 
@@ -1000,6 +1006,7 @@
                     currentSlide = maxSlide;
                 }
                 
+                // Centrage de la slide en mobile: translateX basé sur slideWidth (100%) et recentrage via gap nul
                 const translateX = -currentSlide * slideWidth;
                 carousel.style.transform = `translateX(${translateX}%)`;
             }
