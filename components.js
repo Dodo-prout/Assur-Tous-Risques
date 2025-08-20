@@ -20,22 +20,26 @@ function loadComponent(file, elementId) {
 function initMobileMenu() {
     const navToggle = document.getElementById('nav-toggle');
     const mobileNav = document.getElementById('mobile-nav');
+    const mobileClose = document.getElementById('mobile-close');
     
     if (navToggle && mobileNav) {
+        // Ouvrir le menu avec le bouton hamburger
         navToggle.addEventListener('click', function() {
-            // Toggle de la classe active pour l'animation du hamburger
-            navToggle.classList.toggle('active');
-            
-            // Toggle du menu mobile
-            mobileNav.classList.toggle('translate-x-full');
+            mobileNav.classList.remove('translate-x-full');
         });
+        
+        // Fermer le menu avec la croix
+        if (mobileClose) {
+            mobileClose.addEventListener('click', function() {
+                mobileNav.classList.add('translate-x-full');
+            });
+        }
         
         // Fermer le menu quand on clique sur un lien
         const mobileLinks = mobileNav.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
                 mobileNav.classList.add('translate-x-full');
-                navToggle.classList.remove('active');
             });
         });
         
@@ -43,7 +47,6 @@ function initMobileMenu() {
         document.addEventListener('click', function(event) {
             if (!mobileNav.contains(event.target) && !navToggle.contains(event.target)) {
                 mobileNav.classList.add('translate-x-full');
-                navToggle.classList.remove('active');
             }
         });
     }

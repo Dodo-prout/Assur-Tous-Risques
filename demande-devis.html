@@ -171,6 +171,10 @@
 
         <!-- Menu mobile -->
         <nav id="mobile-nav" class="fixed inset-y-0 right-0 w-72 max-w-full bg-white shadow-2xl translate-x-full transition-transform lg:hidden flex flex-col pt-24 px-6 gap-6 border-l border-gray-200">
+            <!-- Croix de fermeture en haut à droite -->
+            <button id="mobile-close" class="absolute top-6 right-6 w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary transition-colors duration-200">
+                <i class="fas fa-times text-xl"></i>
+            </button>
             <a href="index.html#accueil" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Accueil</a>
             <a href="nos-services.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Services</a>
             <a href="notre-equipe.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Notre équipe</a>
@@ -491,6 +495,15 @@
             navToggle.classList.toggle('active');
             mobileNav.classList.toggle('translate-x-full');
         });
+
+        // Fermer le menu avec la croix
+        const mobileClose = document.getElementById('mobile-close');
+        if (mobileClose) {
+            mobileClose.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                mobileNav.classList.add('translate-x-full');
+            });
+        }
 
         // Fermer le menu mobile en cliquant sur un lien
         document.querySelectorAll('#mobile-nav a').forEach(link => {
