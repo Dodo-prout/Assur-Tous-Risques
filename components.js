@@ -100,6 +100,7 @@ function getCurrentPageName() {
     if (filename === 'nos-services.html') return 'nos-services';
     if (filename === 'notre-equipe.html') return 'notre-equipe';
     if (filename === 'faq.html') return 'faq';
+    if (filename === 'mentions-legales.html') return 'mentions-legales';
     
     return 'index'; // Par défaut
 }
