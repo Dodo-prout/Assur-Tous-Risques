@@ -421,7 +421,7 @@
                         Notre équipe d'experts est à votre disposition pour répondre à toutes vos questions personnalisées.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="tel:0699999999" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition flex items-center justify-center">
+                        <a href="tel:0478725326" class="bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition flex items-center justify-center">
                             <i class="fas fa-phone mr-2"></i>
                             04 78 72 53 26
                         </a>
@@ -438,17 +438,6 @@
     <div id="footer"></div>
 
     <script>
-        // Inclure le script des composants
-        const script = document.createElement('script');
-        script.src = 'components.js';
-        script.onload = function() {
-            // S'assurer que le footer est chargé après que le script soit disponible
-            if (typeof loadComponent !== 'undefined') {
-                loadComponent('footer.html', 'footer');
-            }
-        };
-        document.head.appendChild(script);
-        
         // Gestion FAQ
         function toggleFAQ(button) {
             const answer = button.querySelector('.faq-answer');
