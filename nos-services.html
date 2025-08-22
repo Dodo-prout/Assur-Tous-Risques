@@ -111,54 +111,7 @@
 </head>
 <body class="bg-white text-gray-900">
     
-    <!-- Header avec menu hamburger animé -->
-    <header class="fixed inset-x-0 top-0 z-50 bg-white shadow-lg border-b border-gray-200 transition-colors">
-        <div class="mx-auto max-w-7xl flex items-center justify-between px-6 py-3">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-2 text-gray-900">
-                <img src="images/Logo ATR.png" alt="Logo Assur Tous Risques" class="w-8 h-8">
-                <span class="font-semibold text-lg tracking-tight">
-                    <span class="text-primary">ASSUR</span> <span class="text-gray-500">TOUS</span> <span class="text-primary">RISQUES</span>
-                </span>
-            </a>
-
-            <!-- Menu desktop -->
-            <nav class="hidden lg:flex gap-8">
-                <a href="index.html#accueil" class="nav-underline text-gray-700 hover:text-primary transition">Accueil</a>
-                <a href="nos-services.html" class="nav-underline text-primary font-medium transition">Services</a>
-                <a href="notre-equipe.html" class="nav-underline text-gray-700 hover:text-primary transition">Notre équipe</a>
-                <a href="faq.html" class="nav-underline text-gray-700 hover:text-primary transition">FAQ</a>
-                <a href="index.html#contact" class="nav-underline text-gray-700 hover:text-primary transition">Contact</a>
-            </nav>            <!-- Téléphone + bouton desktop -->
-            <div class="hidden lg:flex items-center gap-4">
-                <span class="flex items-center gap-1 text-sm text-gray-600">
-                    <i class="fas fa-phone w-4 h-4"></i> 01 23 45 67 89
-                </span>
-                <a href="demande-devis.html" class="bg-primary text-white px-5 py-2 rounded hover:bg-primary-dark shadow transition">Demander un devis</a>
-            </div>
-
-            <!-- Burger animé (mobile) -->
-            <button id="nav-toggle" class="lg:hidden p-2 rounded hover:bg-gray-200/50 transition relative w-10 h-10 flex flex-col justify-center items-center">
-                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out origin-center"></span>
-                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out mt-1 origin-center"></span>
-                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out mt-1 origin-center"></span>
-            </button>
-        </div>
-
-        <!-- Menu mobile -->
-        <nav id="mobile-nav" class="fixed inset-y-0 right-0 w-72 max-w-full bg-white shadow-2xl translate-x-full transition-transform lg:hidden flex flex-col pt-24 px-6 gap-6 border-l border-gray-200">
-            <!-- Croix de fermeture en haut à droite -->
-            <button id="mobile-close" class="absolute top-6 right-6 w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary transition-colors duration-200">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-            <a href="index.html#accueil" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Accueil</a>
-            <a href="nos-services.html" class="text-primary text-lg font-semibold transition py-2 border-b border-gray-100">Services</a>
-            <a href="notre-equipe.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Notre équipe</a>
-                        <a href="faq.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">FAQ</a>
-            <a href="index.html#contact" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Contact</a>
-            <a href="demande-devis.html" class="bg-primary text-white px-5 py-3 rounded-lg hover:bg-primary-dark shadow-lg transition mt-4 text-center font-semibold">Demander un devis</a>
-        </nav>
-    </header>
+    <div id="header"></div>
 
     <!-- Hero Section Services -->
     <section class="bg-hero bg-cover bg-center pt-16 pb-0 relative min-h-screen before:content-[''] before:absolute before:inset-0 before:bg-slate-50/70 before:z-10">
@@ -266,26 +219,25 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- Service 2 : Locaux et Équipements -->
+             <!-- Service 2 : Assurance Locaux & équipements-->
             <div class="grid lg:grid-cols-2 gap-12 items-start mb-20">
-                <div class="reveal order-2 lg:order-1">
+                <div class="reveal">
                     <div class="flex items-center gap-4 mb-5">
-                        <div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i class="fas fa-building text-2xl"></i></div>
+                        <div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i class="fas fa-car text-2xl"></i></div>
                         <div>
                             <h3 class="text-2xl sm:text-3xl font-bold">Locaux & équipements</h3>
                             <p class="text-gray-600">Sécurisez vos infrastructures et votre matériel.</p>
                         </div>
                     </div>
-                    <p class="text-gray-700 leading-relaxed mb-6">Une multirisque professionnelle complète: dommages aux biens, pertes d'exploitation et protection cyber.</p>
+                    <p class="text-gray-700 leading-relaxed mb-6">Une multirisque professionnelle complète: dommages aux biens, pertes d'exploitation et protection cyber..</p>
                     <div class="flex flex-wrap gap-2 mt-6" aria-label="Avantages">
-                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-pointer"><i class="fas fa-shield-alt mr-1"></i> Prévention & sécurité</span>
-                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-pointer"><i class="fas fa-user-tie mr-1"></i> Interlocuteur unique</span>
-                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-pointer"><i class="fas fa-stopwatch mr-1"></i> Délais rapides</span>
+                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-pointer"><i class="fas fa-bolt mr-1"></i> Souscription 24h</span>
+                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-pointer"><i class="fas fa-user-shield mr-1"></i> Gestion sinistre dédiée</span>
+                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary hover:text-white hover:scale-105 hover:shadow-lg transition-all duration-300 cursor-pointer"><i class="fas fa-globe-europe mr-1"></i> France entière</span>
                     </div>
                 </div>
-                <div class="reveal order-1 lg:order-2">
-                    <ul class="space-y-3 border-l-2 border-primary/20 pl-5">
+                <div class="reveal">
+                    <ul class="list-none space-y-3 border-l-2 border-primary/20 pl-5">
                         <li class="flex gap-3"><i class="fas fa-check text-primary mt-1"></i><span>Multirisques : incendie, dégâts des eaux, vol</span></li>
                         <li class="flex gap-3"><i class="fas fa-check text-primary mt-1"></i><span>Pertes d'exploitation</span></li>
                         <li class="flex gap-3"><i class="fas fa-check text-primary mt-1"></i><span>Équipements électroniques, bris de machine</span></li>
@@ -296,7 +248,6 @@
                     </ul>
                 </div>
             </div>
-
             <!-- Service 3 : Protection Juridique -->
             <div class="grid lg:grid-cols-2 gap-12 items-start">
                 <div class="reveal">

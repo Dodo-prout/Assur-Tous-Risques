@@ -5,9 +5,10 @@ function loadComponent(file, elementId) {
         .then(data => {
             document.getElementById(elementId).innerHTML = data;
             
-            // Si c'est le header, initialiser le menu mobile
+            // Si c'est le header, initialiser le menu mobile et mettre en surbrillance la page active
             if (elementId === 'header') {
                 initMobileMenu();
+                highlightActivePage();
             }
             
             // Initialiser le smooth scrolling après chargement
@@ -66,6 +67,41 @@ function initSmoothScrolling() {
             }
         });
     });
+}
+
+// Mettre en surbrillance la page active
+function highlightActivePage() {
+    const currentPage = getCurrentPageName();
+    const navLinks = document.querySelectorAll('[data-page]');
+    
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute('data-page');
+        if (linkPage === currentPage) {
+            // Menu desktop
+            if (link.classList.contains('nav-underline')) {
+                link.classList.remove('text-gray-700', 'hover:text-primary');
+                link.classList.add('text-primary', 'font-medium');
+            }
+            // Menu mobile
+            else {
+                link.classList.remove('text-gray-900', 'font-medium');
+                link.classList.add('text-primary', 'font-semibold');
+            }
+        }
+    });
+}
+
+// Déterminer le nom de la page actuelle
+function getCurrentPageName() {
+    const path = window.location.pathname;
+    const filename = path.split('/').pop();
+    
+    if (filename === 'index.html' || filename === '') return 'index';
+    if (filename === 'nos-services.html') return 'nos-services';
+    if (filename === 'notre-equipe.html') return 'notre-equipe';
+    if (filename === 'faq.html') return 'faq';
+    
+    return 'index'; // Par défaut
 }
 
 // Charger les composants au chargement de la page
