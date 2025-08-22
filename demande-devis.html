@@ -18,12 +18,12 @@
                         'primary-dark': '#8a1119'
                     },
                     backgroundImage: {
-                        'backgroundcard': "url('images/backgroundcard.jpg')",
-                        'contact': "url('images/photo contact.png')",
-                        'backgroundatout': "url('images/backgroundatout.png')",
-                        'hero': "url('images/backround hero.png')",
-                        'services': "url('images/backgroundcard.jpg')",
-                        'why-choose': "url('images/backgroundatout.png')"
+                        'backgroundcard': "url('images/backgroundcard.webp')",
+                        'contact': "url('images/photo contact.webp')",
+                        'backgroundatout': "url('images/backgroundatout.webp')",
+                        'hero': "url('images/backround hero.webp')",
+                        'services': "url('images/backgroundcard.webp')",
+                        'why-choose': "url('images/backgroundatout.webp')"
                     },
                     animation: {
                         'blob': 'blob 7s infinite'
@@ -131,58 +131,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <title>Demande de Devis - Assur Tous Risques</title>
+    <!-- Script pour charger les composants -->
+    <script src="components.js"></script>
 </head>
 <body class="bg-gray-50">
-    <!-- Header avec menu hamburger animé -->
-    <header class="fixed inset-x-0 top-0 z-50 bg-white shadow-lg border-b border-gray-200 transition-colors">
-        <div class="mx-auto max-w-7xl flex items-center justify-between px-6 py-3">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center gap-2 text-gray-900">
-                <img src="images/Logo ATR.png" alt="Logo Assur Tous Risques" class="w-8 h-8">
-                <span class="font-semibold text-lg tracking-tight">
-                    <span class="text-primary">ASSUR</span> <span class="text-gray-500">TOUS</span> <span class="text-primary">RISQUES</span>
-                </span>
-            </a>
-
-            <!-- Menu desktop -->
-            <nav class="hidden lg:flex gap-8">
-                <a href="index.html#accueil" class="nav-underline text-gray-700 hover:text-primary transition">Accueil</a>
-                <a href="nos-services.html" class="nav-underline text-gray-700 hover:text-primary transition">Services</a>
-                <a href="notre-equipe.html" class="nav-underline text-gray-700 hover:text-primary transition">Notre équipe</a>
-                <a href="faq.html" class="nav-underline text-gray-700 hover:text-primary transition">FAQ</a>
-                <a href="index.html#contact" class="nav-underline text-gray-700 hover:text-primary transition">Contact</a>
-            </nav>
-
-            <!-- Téléphone + bouton desktop -->
-            <div class="hidden lg:flex items-center gap-4">
-                <span class="flex items-center gap-1 text-sm text-gray-600">
-                    <i class="fas fa-phone w-4 h-4"></i> 01 23 45 67 89
-                </span>
-                <span class="bg-primary text-white px-5 py-2 rounded hover:bg-primary-dark shadow transition font-medium">Demander un devis</span>
-            </div>
-
-            <!-- Burger animé (mobile) -->
-            <button id="nav-toggle" class="lg:hidden p-2 rounded hover:bg-gray-200/50 transition relative w-10 h-10 flex flex-col justify-center items-center">
-                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out origin-center"></span>
-                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out mt-1 origin-center"></span>
-                <span class="hamburger-line w-6 h-0.5 bg-gray-700 lg:hover:bg-primary transition-all duration-300 ease-in-out mt-1 origin-center"></span>
-            </button>
-        </div>
-
-        <!-- Menu mobile -->
-        <nav id="mobile-nav" class="fixed inset-y-0 right-0 w-72 max-w-full bg-white shadow-2xl translate-x-full transition-transform lg:hidden flex flex-col pt-24 px-6 gap-6 border-l border-gray-200">
-            <!-- Croix de fermeture en haut à droite -->
-            <button id="mobile-close" class="absolute top-6 right-6 w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary transition-colors duration-200">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-            <a href="index.html#accueil" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Accueil</a>
-            <a href="nos-services.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Services</a>
-            <a href="notre-equipe.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Notre équipe</a>
-            <a href="faq.html" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">FAQ</a>
-            <a href="index.html#contact" class="text-gray-900 text-lg font-medium hover:text-primary transition py-2 border-b border-gray-100">Contact</a>
-            <span class="bg-primary text-white px-5 py-3 rounded-lg hover:bg-primary-dark shadow-lg transition mt-4 text-center font-semibold">Demander un devis</span>
-        </nav>
-    </header>
+    <div id="header"></div>
 
     <!-- Hero Section -->
     <section class="bg-hero bg-cover bg-center pt-16 pb-0 relative min-h-[85vh] md:min-h-screen before:content-[''] before:absolute before:inset-0 before:bg-slate-50/70 before:z-10">
@@ -477,42 +430,6 @@
 
     <!-- JavaScript -->
     <script>
-        // Charger le composant footer au démarrage
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer').innerHTML = data;
-                })
-                .catch(error => console.error('Erreur lors du chargement du footer:', error));
-        });
-
-        // Menu hamburger
-        const navToggle = document.getElementById('nav-toggle');
-        const mobileNav = document.getElementById('mobile-nav');
-
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            mobileNav.classList.toggle('translate-x-full');
-        });
-
-        // Fermer le menu avec la croix
-        const mobileClose = document.getElementById('mobile-close');
-        if (mobileClose) {
-            mobileClose.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                mobileNav.classList.add('translate-x-full');
-            });
-        }
-
-        // Fermer le menu mobile en cliquant sur un lien
-        document.querySelectorAll('#mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                mobileNav.classList.add('translate-x-full');
-            });
-        });
-
         // Gestion du formulaire multi-étapes
         let currentStep = 1;
         const totalSteps = 4;
