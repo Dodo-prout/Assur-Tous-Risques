@@ -7,37 +7,13 @@
 	<meta name="description" content="Mentions légales du site Assur Tous Risques (WGARAGES Assurance)">
 
 	<!-- Tailwind CSS -->
-	<script src="https://cdn.tailwindcss.com"></script>
-	<script>
-		tailwind.config = {
-			theme: {
-				extend: {
-					colors: {
-						primary: '#aa1520',
-						'primary-dark': '#8b111a',
-						'primary-light': '#c74451'
-					},
-					backgroundImage: {
-						'hero': "url('images/backround hero.webp')"
-					}
-				}
-			}
-		}
-	</script>
+	<script src="https://cdn.tailwindcss.com/3.3.0"></script>
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-	<!-- Styles locaux alignés avec la DA -->
-	<style>
-		.nav-underline { position: relative; }
-		.nav-underline::after { content: ''; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0; background-color: #aa1520; transition: width 0.3s ease; }
-		.nav-underline:hover::after { width: 100%; }
-
-		/* Effets visuels cohérents */
-		.overlay-hero::before { content: ''; position: absolute; inset: 0; background: rgba(248,250,252,0.7); z-index: 10; }
-		.overlay-content > * { position: relative; z-index: 20; }
-	</style>
+	<!-- Styles personnalisés -->
+	<link rel="stylesheet" href="custom.css">
 
 	<!-- Script pour charger header/footer -->
 	<script src="components.js"></script>
