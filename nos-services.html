@@ -291,17 +291,32 @@
                     <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
                         Prêt à protéger votre activité ?
                     </h2>
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    <p class="text-lg text-gray-600 mb-6 lg:mb-8 leading-relaxed">
                         Contactez-nous pour une étude personnalisée et découvrez la solution d'assurance adaptée à vos besoins. Notre équipe d'experts vous accompagne dans toutes vos démarches.
                     </p>
-                    <div class="text-gray-600 space-y-4">
+                    <!-- Coordonnées mises en avant (mobile) -->
+                    <div class="block lg:hidden">
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <a href="tel:0699999999" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-white font-semibold shadow-lg shadow-primary/20 active:scale-[0.98] transform transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/30">
+                                <i class="fas fa-phone"></i>
+                                <span>Appeler</span>
+                            </a>
+                            <a href="mailto:contact@assurtousrisques.fr" class="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white text-primary border border-primary font-semibold shadow-md active:scale-[0.98] transform transition-all duration-300 hover:bg-primary hover:text-white hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg hover:border-primary-dark">
+                                <i class="fas fa-envelope"></i>
+                                <span>Écrire</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Coordonnées (desktop) -->
+                    <div class="hidden lg:block text-gray-600 space-y-4">
                         <div class="flex items-center justify-center lg:justify-start">
                             <i class="fas fa-phone text-primary mr-3"></i>
-                            <span class="font-medium text-gray-900">06 99 99 99 99</span>
+                            <a href="tel:0699999999" class="font-medium text-gray-900 hover:text-primary transition">06 99 99 99 99</a>
                         </div>
                         <div class="flex items-center justify-center lg:justify-start">
                             <i class="fas fa-envelope text-primary mr-3"></i>
-                            <span class="font-medium text-gray-900">contact@assurtousrisques.fr</span>
+                            <a href="mailto:contact@assurtousrisques.fr" class="font-medium text-gray-900 hover:text-primary transition">contact@assurtousrisques.fr</a>
                         </div>
                         <div class="flex items-center justify-center lg:justify-start">
                             <i class="fas fa-map-marker-alt text-primary mr-3"></i>
