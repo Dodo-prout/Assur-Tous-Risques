@@ -6,8 +6,176 @@
     <meta name="description" content="Demandez votre devis personnalisé pour votre assurance automobile. Réponse rapide et tarif adapté à vos besoins.">
     
     <!-- Tailwind CSS -->
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-    <link rel="stylesheet" href="custom.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#aa1520',
+                        'primary-light': '#c74451',
+                        'primary-dark': '#8a1119'
+                    },
+                    backgroundImage: {
+                        'backgroundcard': "url('images/backgroundcard.webp')",
+                        'contact': "url('images/photo contact.webp')",
+                        'backgroundatout': "url('images/backgroundatout.webp')",
+                        'hero': "url('images/backround hero.webp')",
+                        'services': "url('images/backgroundcard.webp')",
+                        'why-choose': "url('images/backgroundatout.webp')"
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite'
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Effet underline pour navigation */
+        .nav-underline {
+            position: relative;
+        }
+
+        .nav-underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            height: 2px;
+            width: 0;
+            background-color: #aa1520;
+            transition: width 0.3s ease;
+        }
+
+        .nav-underline:hover::after {
+            width: 100%;
+        }
+
+        /* Animation du menu hamburger */
+        .hamburger-line {
+            transform-origin: center;
+        }
+
+        #nav-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        #nav-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        #nav-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Responsive du menu hamburger */
+        @media (max-width: 1023px) {
+            .hamburger-line {
+                background-color: #374151;
+            }
+            
+            #nav-toggle:hover .hamburger-line {
+                background-color: #aa1520;
+            }
+            
+            #nav-toggle.active .hamburger-line {
+                background-color: #aa1520;
+            }
+        }
+
+        /* Glass card effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Overlay pour hero */
+        .overlay-hero {
+            background: linear-gradient(135deg, rgba(170, 21, 32, 0.9) 0%, rgba(199, 68, 81, 0.8) 100%);
+        }
+
+        /* Overlay pour services */
+        .overlay-services {
+            background: linear-gradient(135deg, rgba(170, 21, 32, 0.8) 0%, rgba(199, 68, 81, 0.7) 100%);
+        }
+
+        /* Overlay pour contenu */
+        .overlay-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Style pour les inputs de formulaire */
+        .form-input {
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #aa1520;
+            box-shadow: 0 0 0 3px rgba(170, 21, 32, 0.1);
+        }
+
+        /* Animation blob */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        /* Carousel responsive */
+        @media (max-width: 768px) {
+            .carousel-container {
+                scroll-snap-type: x mandatory;
+            }
+            .carousel-item {
+                scroll-snap-align: start;
+                min-width: 100%;
+            }
+        }
+
+        /* Animation FAQ */
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation des étapes du formulaire */
+        .form-step {
+            transition: all 0.5s ease;
+        }
+
+        .form-step.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .form-step:not(.active) {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    </style>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
