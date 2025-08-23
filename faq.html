@@ -42,170 +42,55 @@
         }
     </script>
     <style>
-        /* Effet underline pour navigation */
-        .nav-underline {
-            position: relative;
+        :root {
+            --primary: #aa1520;
+            --gray-300: #d1d5db;
         }
-
-        .nav-underline::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            height: 2px;
-            width: 0;
-            background-color: #aa1520;
-            transition: width 0.3s ease;
-        }
-
-        .nav-underline:hover::after {
-            width: 100%;
-        }
-
-        /* Animation du menu hamburger */
+        
+        /* Menu hamburger */
         .hamburger-line {
             transform-origin: center;
         }
-
+        
         #nav-toggle.active .hamburger-line:nth-child(1) {
             transform: rotate(45deg) translate(6px, 6px);
         }
-
+        
         #nav-toggle.active .hamburger-line:nth-child(2) {
             opacity: 0;
             transform: scaleX(0);
         }
-
+        
         #nav-toggle.active .hamburger-line:nth-child(3) {
             transform: rotate(-45deg) translate(6px, -6px);
         }
-
-        /* Responsive du menu hamburger */
+        
         @media (max-width: 1023px) {
-            .hamburger-line {
-                background-color: #374151;
-            }
-            
-            #nav-toggle:hover .hamburger-line {
-                background-color: #aa1520;
-            }
-            
-            #nav-toggle.active .hamburger-line {
-                background-color: #aa1520;
-            }
+            .hamburger-line { background-color: #374151; }
+            #nav-toggle:hover .hamburger-line,
+            #nav-toggle.active .hamburger-line { background-color: var(--primary); }
         }
-
-        /* Glass card effect */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Overlay pour hero */
-        .overlay-hero {
-            background: linear-gradient(135deg, rgba(170, 21, 32, 0.9) 0%, rgba(199, 68, 81, 0.8) 100%);
-        }
-
-        /* Overlay pour services */
-        .overlay-services {
-            background: linear-gradient(135deg, rgba(170, 21, 32, 0.8) 0%, rgba(199, 68, 81, 0.7) 100%);
-        }
-
-        /* Overlay pour contenu */
-        .overlay-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Style pour les inputs de formulaire */
-        .form-input {
-            border: 2px solid #e5e7eb;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus {
-            border-color: #aa1520;
-            box-shadow: 0 0 0 3px rgba(170, 21, 32, 0.1);
-        }
-
-        /* Animation blob */
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-
-        .animate-blob {
-            animation: blob 7s infinite;
-        }
-
-        /* Carousel responsive */
-        @media (max-width: 768px) {
-            .carousel-container {
-                scroll-snap-type: x mandatory;
-            }
-            .carousel-item {
-                scroll-snap-align: start;
-                min-width: 100%;
-            }
-        }
-
-        /* Animation FAQ */
-        .faq-item {
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Animation des étapes du formulaire */
-        .form-step {
-            transition: all 0.5s ease;
-        }
-
-        .form-step.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .form-step:not(.active) {
-            opacity: 0;
-            transform: translateX(100%);
-        }
-
-        /* Styles pour l'effet déroulant des FAQ */
+        
+        /* FAQ accordéon */
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
         }
-
+        
         .faq-answer.open {
             max-height: 200px;
             margin-top: 1rem;
             padding-top: 1rem;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid var(--gray-300);
         }
-
+        
         .faq-toggle {
             transition: transform 0.3s ease;
         }
-
+        
         .faq-toggle.rotate {
             transform: rotate(45deg);
-        }
-
-        .faq-item {
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
     </style>
     
@@ -308,7 +193,7 @@
                     </h3>
                     
                     <!-- FAQ Item -->
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Comment souscrire une assurance négociant automobile ?</h4>
@@ -323,7 +208,7 @@
                         </button>
                     </div>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Quels documents sont nécessaires pour la souscription ?</h4>
@@ -337,7 +222,7 @@
                         </button>
                     </div>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Quel est le délai pour obtenir une couverture ?</h4>
@@ -352,7 +237,7 @@
                         </button>
                     </div>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Dois-je déjà avoir mes plaques W Garage pour souscrire ?</h4>
@@ -376,7 +261,7 @@
                         Garanties
                     </h3>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Que couvre l'assurance W Garage exactement ?</h4>
@@ -391,7 +276,7 @@
                         </button>
                     </div>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Les véhicules de clients sont-ils couverts ?</h4>
@@ -406,7 +291,7 @@
                         </button>
                     </div>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">A quoi sert la RC Professionnelle ?</h4>
@@ -429,7 +314,7 @@
                         Sinistres
                     </h3>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Comment déclarer un sinistre ?</h4>
@@ -444,7 +329,7 @@
                         </button>
                     </div>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Quel est le délai de traitement d'un sinistre ?</h4>
@@ -457,7 +342,7 @@
                         </button>
                     </div>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Y a-t-il une franchise sur les sinistres ?</h4>
@@ -479,7 +364,7 @@
                         Questions Générales
                     </h3>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Proposez-vous un paiement mensuel ?</h4>
@@ -494,7 +379,7 @@
                         </button>
                     </div>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Intervenez-vous dans toute la France ?</h4>
@@ -508,7 +393,7 @@
                         </button>
                     </div>
 
-                    <div class="faq-item bg-white rounded-xl border border-gray-100 mb-4">
+                    <div class="bg-white rounded-xl border border-gray-100 mb-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
                         <button class="w-full text-left p-6 focus:outline-none" onclick="toggleFAQ(this)">
                             <div class="flex justify-between items-center">
                                 <h4 class="text-lg font-semibold text-gray-900 pr-4">Puis-je modifier mon contrat en cours d'année ?</h4>

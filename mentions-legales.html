@@ -42,27 +42,9 @@
 		}
 	</script>
 	<style>
-		/* Effet underline pour navigation */
-		.nav-underline {
-			position: relative;
-		}
+		/* Styles essentiels uniquement pour cette page */
 
-		.nav-underline::after {
-			content: '';
-			position: absolute;
-			left: 0;
-			bottom: -4px;
-			height: 2px;
-			width: 0;
-			background-color: #aa1520;
-			transition: width 0.3s ease;
-		}
-
-		.nav-underline:hover::after {
-			width: 100%;
-		}
-
-		/* Animation du menu hamburger */
+		/* Animation du menu hamburger - optimisé */
 		.hamburger-line {
 			transform-origin: center;
 		}
@@ -80,101 +62,16 @@
 			transform: rotate(-45deg) translate(6px, -6px);
 		}
 
-		/* Responsive du menu hamburger */
+		/* Responsive du menu hamburger - optimisé */
 		@media (max-width: 1023px) {
 			.hamburger-line {
 				background-color: #374151;
 			}
 			
-			#nav-toggle:hover .hamburger-line {
-				background-color: #aa1520;
-			}
-			
+			#nav-toggle:hover .hamburger-line,
 			#nav-toggle.active .hamburger-line {
 				background-color: #aa1520;
 			}
-		}
-
-		/* Glass card effect */
-		.glass-card {
-			background: rgba(255, 255, 255, 0.1);
-			backdrop-filter: blur(10px);
-			border: 1px solid rgba(255, 255, 255, 0.2);
-		}
-
-		/* Overlay pour hero */
-		.overlay-hero {
-			background: linear-gradient(135deg, rgba(170, 21, 32, 0.9) 0%, rgba(199, 68, 81, 0.8) 100%);
-		}
-
-		/* Overlay pour services */
-		.overlay-services {
-			background: linear-gradient(135deg, rgba(170, 21, 32, 0.8) 0%, rgba(199, 68, 81, 0.7) 100%);
-		}
-
-		/* Overlay pour contenu */
-		.overlay-content {
-			background: rgba(255, 255, 255, 0.95);
-			backdrop-filter: blur(10px);
-		}
-
-		/* Style pour les inputs de formulaire */
-		.form-input {
-			border: 2px solid #e5e7eb;
-			transition: all 0.3s ease;
-		}
-
-		.form-input:focus {
-			border-color: #aa1520;
-			box-shadow: 0 0 0 3px rgba(170, 21, 32, 0.1);
-		}
-
-		/* Animation blob */
-		@keyframes blob {
-			0% { transform: translate(0px, 0px) scale(1); }
-			33% { transform: translate(30px, -50px) scale(1.1); }
-			66% { transform: translate(-20px, 20px) scale(0.9); }
-			100% { transform: translate(0px, 0px) scale(1); }
-		}
-
-		.animate-blob {
-			animation: blob 7s infinite;
-		}
-
-		/* Carousel responsive */
-		@media (max-width: 768px) {
-			.carousel-container {
-				scroll-snap-type: x mandatory;
-			}
-			.carousel-item {
-				scroll-snap-align: start;
-				min-width: 100%;
-			}
-		}
-
-		/* Animation FAQ */
-		.faq-item {
-			transition: all 0.3s ease;
-		}
-
-		.faq-item:hover {
-			transform: translateY(-2px);
-			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-		}
-
-		/* Animation des étapes du formulaire */
-		.form-step {
-			transition: all 0.5s ease;
-		}
-
-		.form-step.active {
-			opacity: 1;
-			transform: translateX(0);
-		}
-
-		.form-step:not(.active) {
-			opacity: 0;
-			transform: translateX(100%);
 		}
 	</style>
 
@@ -190,9 +87,10 @@
 	<div id="header"></div>
 
 	<!-- Hero simple avec fond et overlay pour lisibilité -->
-	<section class="bg-hero bg-cover bg-center pt-16 pb-0 relative min-h-[45vh] md:min-h-[50vh] overlay-hero overlay-content flex items-center">
+	<section class="bg-hero bg-cover bg-center pt-16 pb-0 relative min-h-[45vh] md:min-h-[50vh] flex items-center">
+		<!-- Contenu avec backdrop-blur et bg-white/95 -->
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 w-full">
-			<div class="max-w-3xl mx-auto text-center">
+			<div class="max-w-3xl mx-auto text-center bg-white/95 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
 				<p class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-3">Informations légales</p>
 				<h1 class="text-4xl sm:text-5xl font-bold leading-tight">Mentions légales</h1>
 				<p class="text-gray-700 text-base sm:text-lg mt-4 max-w-2xl mx-auto">Toutes les informations relatives à l'éditeur du site, l'hébergement, et les conditions d'utilisation.</p>
@@ -208,7 +106,7 @@
 				<!-- Éditeur du site -->
 				<section>
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Éditeur du site</h2>
-					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
+					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
 						<ul class="space-y-2 text-gray-700">
 							<li><span class="font-semibold">Raison sociale</span> : Assur Tous Risques (GLOBAL CONSULTANTS)</li>
 							<li><span class="font-semibold">Forme juridique</span> : EURL </li>
@@ -229,7 +127,7 @@
 				<!-- Directeur de la publication -->
 				<section>
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Directeur de la publication</h2>
-					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
+					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
 						<p class="text-gray-700">Philippe Lethiec</p>
 					</div>
 				</section>
@@ -237,7 +135,7 @@
 				<!-- Hébergeur -->
 				<section>
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Hébergement</h2>
-					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
+					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
 						<ul class="space-y-2 text-gray-700">
 							<li><span class="font-semibold">Hébergeur</span> : Hostinger</li>
 							<li><span class="font-semibold">Adresse</span> : À compléter</li>
@@ -249,7 +147,7 @@
 				<!-- Respect de la vie privée et des données personnelles -->
 				<section>
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Respect de la vie privée et des données personnelles</h2>
-					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 space-y-4">
+					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 space-y-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
 						<p class="text-gray-700">Les données sont collectées dans le but exclusif d'établir une relation commerciale et professionnelle avec les clients.</p>
 						<p class="text-gray-700">Les données à caractère personnel sont conservées par Assur Tous Risques pendant une période raisonnable.</p>
 						<p class="text-gray-700">Si la personne ne fournit pas toutes les informations obligatoires dans les formulaires du site (*Champs obligatoires), elle ne peut valider le formulaire.</p>
@@ -267,7 +165,7 @@
 				<!-- Droits de reproduction -->
 				<section>
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Droits de reproduction</h2>
-					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
+					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
 						<p class="text-gray-700">L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris les représentations iconographiques et photographiques. La reproduction de tout ou partie de ce site sur un support quel qu'il soit est formellement interdite, sauf autorisation expresse du directeur de la publication.</p>
 					</div>
 				</section>
@@ -275,7 +173,7 @@
 				<!-- Cookies -->
 				<section>
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Cookies</h2>
-					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 space-y-4">
+					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 space-y-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
 						<p class="text-gray-700">Le site peut utiliser des traceurs (cookies) pour améliorer l'expérience utilisateur et mesurer l'audience. Vous pouvez gérer vos préférences via les paramètres de votre navigateur. Le fait de bloquer certains types de cookies peut impacter votre expérience sur le site.</p>
 					</div>
 				</section>
@@ -283,7 +181,7 @@
 				<!-- Limitation de responsabilité -->
 				<section>
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Limitation de responsabilité</h2>
-					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
+					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
 						<p class="text-gray-700">Assur Tous Risques met tout en œuvre pour assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, l'éditeur ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition. En conséquence, l'éditeur décline toute responsabilité pour toute imprécision, inexactitude ou omission portant sur des informations disponibles sur le site.</p>
 					</div>
 				</section>
@@ -291,8 +189,8 @@
 				<!-- Contact légal -->
 				<section>
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Contact</h2>
-					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8">
-						<p class="text-gray-700">Pour toute question concernant ces mentions légales, vous pouvez nous contacter par téléphone au <a href="tel:0478725326" class="text-primary hover:underline">04 78 72 53 26</a> ou par email à <a href="mailto:contact@assur-tous-risques.com" class="text-primary hover:underline">contact@assur-tous-risques.com</a>.</p>
+					<div class="bg-white rounded-xl border border-gray-200 p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+						<p class="text-gray-700">Pour toute question concernant ces mentions légales, vous pouvez nous contacter par téléphone au <a href="tel:0478725326" class="text-primary hover:underline transition-colors duration-200">04 78 72 53 26</a> ou par email à <a href="mailto:contact@assur-tous-risques.com" class="text-primary hover:underline transition-colors duration-200">contact@assur-tous-risques.com</a>.</p>
 					</div>
 				</section>
 

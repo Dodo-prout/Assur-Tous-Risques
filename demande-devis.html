@@ -35,33 +35,20 @@
                             '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' }
                         }
+                    },
+                    extend: {
+                        backdropBlur: {
+                            'xs': '2px',
+                        }
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Effet underline pour navigation */
-        .nav-underline {
-            position: relative;
-        }
-
-        .nav-underline::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            height: 2px;
-            width: 0;
-            background-color: #aa1520;
-            transition: width 0.3s ease;
-        }
-
-        .nav-underline:hover::after {
-            width: 100%;
-        }
-
-        /* Animation du menu hamburger */
+        /* CSS minimal - Seulement les styles impossibles à reproduire avec Tailwind */
+        
+        /* Animation du menu hamburger - Impossible avec Tailwind */
         .hamburger-line {
             transform-origin: center;
         }
@@ -79,7 +66,7 @@
             transform: rotate(-45deg) translate(6px, -6px);
         }
 
-        /* Responsive du menu hamburger */
+        /* Responsive du menu hamburger - Spécifique */
         @media (max-width: 1023px) {
             .hamburger-line {
                 background-color: #374151;
@@ -94,53 +81,7 @@
             }
         }
 
-        /* Glass card effect */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Overlay pour hero */
-        .overlay-hero {
-            background: linear-gradient(135deg, rgba(170, 21, 32, 0.9) 0%, rgba(199, 68, 81, 0.8) 100%);
-        }
-
-        /* Overlay pour services */
-        .overlay-services {
-            background: linear-gradient(135deg, rgba(170, 21, 32, 0.8) 0%, rgba(199, 68, 81, 0.7) 100%);
-        }
-
-        /* Overlay pour contenu */
-        .overlay-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Style pour les inputs de formulaire */
-        .form-input {
-            border: 2px solid #e5e7eb;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus {
-            border-color: #aa1520;
-            box-shadow: 0 0 0 3px rgba(170, 21, 32, 0.1);
-        }
-
-        /* Animation blob */
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-
-        .animate-blob {
-            animation: blob 7s infinite;
-        }
-
-        /* Carousel responsive */
+        /* Carousel responsive - Complexe */
         @media (max-width: 768px) {
             .carousel-container {
                 scroll-snap-type: x mandatory;
@@ -151,29 +92,23 @@
             }
         }
 
-        /* Animation FAQ */
-        .faq-item {
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Animation des étapes du formulaire */
+        /* Animation des étapes du formulaire - ESSENTIEL */
         .form-step {
             transition: all 0.5s ease;
-        }
-
-        .form-step.active {
             opacity: 1;
             transform: translateX(0);
         }
 
-        .form-step:not(.active) {
+        .form-step.hidden {
             opacity: 0;
             transform: translateX(100%);
+            position: absolute;
+            pointer-events: none;
+        }
+
+        /* Barre de progression - Transition fluide */
+        .progress-bar {
+            transition: width 0.5s ease;
         }
     </style>
     
@@ -218,16 +153,16 @@
                     </p>
 
                     <div class="flex items-center justify-center gap-4 text-sm text-gray-500 mb-8 sm:mb-12">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-clock text-primary"></i>
+                        <div class="flex items-center gap-2 group hover:text-primary transition-colors duration-300">
+                            <i class="fas fa-clock text-primary group-hover:scale-110 transition-transform duration-300"></i>
                             <span>5 minutes</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-thumbs-up text-primary"></i>
+                        <div class="flex items-center gap-2 group hover:text-primary transition-colors duration-300">
+                            <i class="fas fa-thumbs-up text-primary group-hover:scale-110 transition-transform duration-300"></i>
                             <span>100% gratuit</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-phone text-primary"></i>
+                        <div class="flex items-center gap-2 group hover:text-primary transition-colors duration-300">
+                            <i class="fas fa-phone text-primary group-hover:scale-110 transition-transform duration-300"></i>
                             <span>Réponse rapide</span>
                         </div>
                     </div>
@@ -275,9 +210,9 @@
                         <div class="grid md:grid-cols-2 gap-4">
                             <label class="relative cursor-pointer">
                                 <input type="radio" name="activity_type" value="negociant" class="sr-only peer">
-                                <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all">
-                                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                                        <i class="fas fa-car text-primary text-xl"></i>
+                                <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 peer-checked:border-primary peer-checked:bg-primary/5 transition-all duration-300 ease-in-out">
+                                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+                                        <i class="fas fa-car text-primary text-xl group-hover:scale-110 transition-transform duration-300"></i>
                                     </div>
                                     <h3 class="text-lg font-semibold mb-2">Négociant Automobile</h3>
                                     <p class="text-gray-600 text-sm">Vente de véhicules d'occasion, concession, etc.</p>
@@ -286,9 +221,9 @@
                             
                             <label class="relative cursor-pointer">
                                 <input type="radio" name="activity_type" value="garage" class="sr-only peer">
-                                <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/5 transition-all">
-                                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                                        <i class="fas fa-wrench text-primary text-xl"></i>
+                                <div class="border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 peer-checked:border-primary peer-checked:bg-primary/5 transition-all duration-300 ease-in-out">
+                                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+                                        <i class="fas fa-wrench text-primary text-xl group-hover:scale-110 transition-transform duration-300"></i>
                                     </div>
                                     <h3 class="text-lg font-semibold mb-2">Garage</h3>
                                     <p class="text-gray-600 text-sm">Réparation, entretien, mécanique générale</p>
@@ -339,26 +274,26 @@
                     <div id="step-3" class="form-step hidden">
                         <h2 class="text-2xl font-bold text-gray-900 mb-6">Quelles garanties vous intéressent ?</h2>
                         <div class="space-y-4">
-                            <label class="flex items-start gap-3 cursor-pointer">
-                                <input type="checkbox" name="guarantees[]" value="rc_pro" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary/20">
+                            <label class="flex items-start gap-3 cursor-pointer group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300 ease-in-out">
+                                <input type="checkbox" name="guarantees[]" value="rc_pro" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary/20 group-hover:scale-110 transition-transform duration-300">
                                 <div>
-                                    <div class="font-medium text-gray-900">Assurance W Garage</div>
+                                    <div class="font-medium text-gray-900 group-hover:text-primary transition-colors duration-300">Assurance W Garage</div>
                                     <div class="text-sm text-gray-600">Protection de votre responsabilité civile, de votre activité et de vos véhicules</div>
                                 </div>
                             </label>
                             
-                            <label class="flex items-start gap-3 cursor-pointer">
-                                <input type="checkbox" name="guarantees[]" value="multirisque" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary/20">
+                            <label class="flex items-start gap-3 cursor-pointer group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300 ease-in-out">
+                                <input type="checkbox" name="guarantees[]" value="multirisque" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary/20 group-hover:scale-110 transition-transform duration-300">
                                 <div>
-                                    <div class="font-medium text-gray-900">Assurance de votre local</div>
+                                    <div class="font-medium text-gray-900 group-hover:text-primary transition-colors duration-300">Assurance de votre local</div>
                                     <div class="text-sm text-gray-600">Couverture complète de vos locaux, équipements et marchandises</div>
                                 </div>
                             </label>
                             
-                            <label class="flex items-start gap-3 cursor-pointer">
-                                <input type="checkbox" name="guarantees[]" value="legal" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary/20">
+                            <label class="flex items-start gap-3 cursor-pointer group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300 ease-in-out">
+                                <input type="checkbox" name="guarantees[]" value="legal" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary/20 group-hover:scale-110 transition-transform duration-300">
                                 <div>
-                                    <div class="font-medium text-gray-900">Protection Juridique</div>
+                                    <div class="font-medium text-gray-900 group-hover:text-primary transition-colors duration-300">Protection Juridique</div>
                                     <div class="text-sm text-gray-600">Assistance et prise en charge des frais de justice</div>
                                 </div>
                             </label>
@@ -446,29 +381,29 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
                 <!-- Avantage 1 -->
-                <div class="text-center group">
-                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors duration-300">
-                        <i class="fas fa-rocket text-xl sm:text-2xl text-primary"></i>
+                <div class="text-center group hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-rocket text-xl sm:text-2xl text-primary group-hover:scale-125 transition-transform duration-300"></i>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Réponse rapide</h3>
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300">Réponse rapide</h3>
                     <p class="text-sm sm:text-base text-gray-600 max-w-xs mx-auto">Recevez votre devis personnalisé sous 24h maximum</p>
                 </div>
 
                 <!-- Avantage 2 -->
-                <div class="text-center group">
-                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors duration-300">
-                        <i class="fas fa-user-tie text-xl sm:text-2xl text-primary"></i>
+                <div class="text-center group hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-user-tie text-xl sm:text-2xl text-primary group-hover:scale-125 transition-transform duration-300"></i>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Expertise métier</h3>
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300">Expertise métier</h3>
                     <p class="text-sm sm:text-base text-gray-600 max-w-xs mx-auto">Nos conseillers connaissent parfaitement vos spécificités</p>
                 </div>
 
                 <!-- Avantage 3 -->
-                <div class="text-center group">
-                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors duration-300">
-                        <i class="fas fa-chart-line text-xl sm:text-2xl text-primary"></i>
+                <div class="text-center group hover:-translate-y-2 transition-all duration-300 ease-in-out">
+                    <div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                        <i class="fas fa-chart-line text-xl sm:text-2xl text-primary group-hover:scale-125 transition-transform duration-300"></i>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Tarifs compétitifs</h3>
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300">Tarifs compétitifs</h3>
                     <p class="text-sm sm:text-base text-gray-600 max-w-xs mx-auto">Les meilleures conditions grâce à nos partenariats</p>
                 </div>
             </div>

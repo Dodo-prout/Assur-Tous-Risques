@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Courtier spécialisé dans la protection des négociants automobiles et W Garages. Solutions d'assurance sur mesure.">
+<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>WGARAGES - Assurance W Garage</title>
+<script src="components.js"></script>
+</head>
+<body class="bg-white text-gray-900">
+<div id="header"></div>
+<section id="accueil" role="region" aria-labelledby="hero-title" class="bg-hero bg-cover bg-center pt-16 pb-0 md:pb-12 relative min-h-screen md:min-h-[80vh]">
+<div class="absolute inset-0 bg-slate-50/70 z-10"></div>
+<div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 sm:py-12 lg:py-16">
+<div class="flex flex-col xl:flex-row gap-12 lg:gap-16 xl:gap-20 items-center justify-center min-h-[calc(100dvh-4rem)] md:min-h-[60vh] xl:min-h-[55vh]">
+<div class="w-full max-w-4xl mx-auto text-center xl:text-left xl:flex-1">
+<h1 id="hero-title" class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold tracking-tight leading-tight mb-4 sm:mb-6"> Assurez votre W garage aujourd'hui </h1>
+<p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto xl:mx-0"> Courtier indépendant depuis 2009, Assur Tous Risques conçoit des solutions sur-mesure pour particuliers et entreprises partout en France. </p>
+<div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center xl:justify-start mb-8 sm:mb-12">
+<a href="demande-devis.html" class="bg-gradient-to-br from-primary to-primary-dark text-white px-6 py-3 rounded-lg hover:-translate-y-0.5 shadow-lg hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center text-sm sm:text-base">
+<i class="fas fa-file-contract mr-2"></i> Obtenir un devis gratuit </a>
+<a href="nos-services.html" class="border-2 border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-white hover:-translate-y-0.5 transition-all duration-300 text-center text-sm sm:text-base"> En savoir plus </a>
+</div>
+<div class="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center xl:text-left max-w-lg sm:max-w-2xl mx-auto xl:mx-0">
+<div class="border-r border-gray-300 xl:border-gray-200 last:border-r-0 pr-4 sm:pr-6 lg:pr-8">
+<p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">15</p>
+<p class="text-xs sm:text-sm lg:text-base text-gray-600">ans d'expertise</p>
+</div>
+<div class="border-r border-gray-300 xl:border-gray-200 last:border-r-0 pr-4 sm:pr-6 lg:pr-8">
+<p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">+5 000</p>
+<p class="text-xs sm:text-sm lg:text-base text-gray-600">clients satisfaits</p>
+</div>
+<div>
+<p class="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary mb-1">24/7</p>
+<p class="text-xs sm:text-sm lg:text-base text-gray-600">Assistance</p>
+</div>
+</div>
+</div>
+<div class="hidden md:block flex-1 w-full max-w-lg xl:max-w-none mx-auto xl:mx-0">
+<div class="glass-card p-6 sm:p-8 shadow-2xl transform transition-all duration-300 hover:scale-[1.02]">
+<h3 class="text-xl font-semibold mb-6 text-center text-gray-800">Demande de devis gratuit</h3>
+<form class="space-y-5">
+<div>
+<label for="company" class="block text-sm font-medium text-gray-700 mb-1">Nom de la société <span class="text-primary">*</span></label>
+<input type="text" id="company" name="company" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 bg-white/90 backdrop-blur-[15px] border-[1.5px] border-white/40 shadow-[0_4px_16px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.6)] focus:bg-white/95 focus:border-primary focus:shadow-[0_0_0_3px_rgba(170,21,32,0.1),0_6px_20px_rgba(170,21,32,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] focus:outline-none focus:-translate-y-[1px] transition-all duration-300" placeholder="Nom de la société" required>
+</div>
+<div>
+<label for="siret" class="block text-sm font-medium text-gray-700 mb-1">SIRET</label>
+<input type="text" id="siret" name="siret" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 bg-white/90 backdrop-blur-[15px] border-[1.5px] border-white/40 shadow-[0_4px_16px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.6)] focus:bg-white/95 focus:border-primary focus:shadow-[0_0_0_3px_rgba(170,21,32,0.1),0_6px_20px_rgba(170,21,32,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] focus:outline-none focus:-translate-y-[1px] transition-all duration-300" placeholder="123 456 789 00000">
+</div>
+<div>
+<label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Téléphone <span class="text-primary">*</span></label>
+<input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 bg-white/90 backdrop-blur-[15px] border-[1.5px] border-white/40 shadow-[0_4px_16px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.6)] focus:bg-white/95 focus:border-primary focus:shadow-[0_0_0_3px_rgba(170,21,32,0.1),0_6px_20px_rgba(170,21,32,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] focus:outline-none focus:-translate-y-[1px] transition-all duration-300" placeholder="06 12 34 56 78" required>
+</div>
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 bg-white/90 backdrop-blur-[15px] border-[1.5px] border-white/40 shadow-[0_4px_16px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.6)] focus:bg-white/95 focus:border-primary focus:shadow-[0_0_0_3px_rgba(170,21,32,0.1),0_6px_20px_rgba(170,21,32,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] focus:outline-none focus:-translate-y-[1px] transition-all duration-300" placeholder="contact@email.com" required>
+</div>
+<div>
+<label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+<textarea id="message" name="message" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 bg-white/90 backdrop-blur-[15px] border-[1.5px] border-white/40 shadow-[0_4px_16px_rgba(0,0,0,0.03),inset_0_1px_0_rgba(255,255,255,0.6)] focus:bg-white/95 focus:border-primary focus:shadow-[0_0_0_3px_rgba(170,21,32,0.1),0_6px_20px_rgba(170,21,32,0.08),inset_0_1px_0_rgba(255,255,255,0.8)] focus:outline-none focus:-translate-y-[1px] transition-all duration-300" placeholder="Décrivez vos besoins..." required></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-white py-4 rounded-xl font-medium hover:bg-primary-dark transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl">Envoyer la demande</button>
+<p class="text-sm text-gray-600 text-center font-medium">Nous vous répondrons sous 24h.</p>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-it-works" class="py-12 sm:py-16 lg:py-20 relative overflow-hidden">
+<svg class="absolute inset-0 w-full h-full pointer-events-none select-none opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs>
+<radialGradient id="blob1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+<stop offset="0%" stop-color="#aa1520" stop-opacity="0.8" />
+<stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+</radialGradient>
+<radialGradient id="blob2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+<stop offset="0%" stop-color="#c74451" stop-opacity="0.6" />
+<stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+</radialGradient>
+</defs>
+<circle class="animate-blob" cx="200" cy="300" r="200" fill="url(#blob1)" />
+<circle class="animate-blob animation-delay-2" cx="600" cy="200" r="150" fill="url(#blob2)" />
+</svg>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<p class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-3 sm:mb-4">Démarches simplifiées</p>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-10 sm:mb-12 lg:mb-16 max-w-4xl mx-auto">Souscrire à une assurance n'a jamais été aussi simple</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
+<div class="text-center group">
+<div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+<i class="fas fa-clipboard-list text-xl sm:text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Remplissez votre demande</h3>
+<p class="text-sm sm:text-base text-gray-600 max-w-xs mx-auto">Quelques infos suffisent pour démarrer.</p>
+</div>
+<div class="text-center group">
+<div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+<i class="fas fa-phone text-xl sm:text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Nous vous rappelons</h3>
+<p class="text-sm sm:text-base text-gray-600 max-w-xs mx-auto">Nos conseillers vous contactent rapidement.</p>
+</div>
+<div class="text-center group">
+<div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+<i class="fas fa-check-circle text-xl sm:text-2xl text-primary"></i>
+</div>
+<h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Recevez votre contrat</h3>
+<p class="text-sm sm:text-base text-gray-600 max-w-xs mx-auto">Obtenez votre assurance en toute simplicité.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="apropos" class="py-12 sm:py-16 lg:py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-16 items-center">
+<div class="flex-1 order-2 lg:order-1">
+<div class="w-full h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] overflow-hidden rounded-lg">
+<img src="images/photo formule.webp" alt="Équipe Assur Tous Risques" class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+</div>
+<div class="flex-1 text-center lg:text-left order-1 lg:order-2">
+<p class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-3 sm:mb-4">Engagés pour votre protection</p>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 max-w-xl mx-auto lg:mx-0">Une équipe à votre écoute, partout en France</h2>
+<p class="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0"> Depuis plus de 15 ans, nous accompagnons particuliers et professionnels avec des solutions d'assurance fiables, claires et humaines. </p>
+<a href="nos-services.html" class="bg-gradient-to-br from-primary to-primary-dark text-white px-6 py-3 rounded-lg hover:bg-primary-dark hover:-translate-y-0.5 shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:scale-[1.02] inline-flex items-center text-sm sm:text-base">
+<span>Découvrir nos services</span>
+<i class="fas fa-arrow-right ml-2"></i>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section id="services" class="bg-services bg-center bg-top pt-10 sm:pt-16 pb-12 sm:pb-16 relative overflow-hidden min-h-[70vh] md:min-h-screen" style="background-position: center 20%; background-size: 100%;">
+<div class="absolute inset-0 bg-gradient-to-br from-white/30 to-white/20 z-10"></div>
+<svg class="absolute inset-0 w-full h-full pointer-events-none select-none opacity-10 z-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs>
+<radialGradient id="blob3" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+<stop offset="0%" stop-color="#aa1520" stop-opacity="0.6" />
+<stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+</radialGradient>
+<radialGradient id="blob4" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+<stop offset="0%" stop-color="#c74451" stop-opacity="0.4" />
+<stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+</radialGradient>
+</defs>
+<circle class="animate-blob" cx="150" cy="150" r="180" fill="url(#blob3)" style="animation-delay: 4s;" />
+<circle class="animate-blob" cx="650" cy="450" r="120" fill="url(#blob4)" style="animation-delay: 6s;" />
+<circle class="animate-blob" cx="400" cy="300" r="100" fill="url(#blob3)" style="animation-delay: 8s;" />
+</svg>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-20">
+<p class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-3 sm:mb-4">Nos spécialités</p>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-10 sm:mb-12 lg:mb-16 max-w-4xl mx-auto">Nos Services d'Assurance</h2>
+<div class="carousel-container">
+<div class="carousel-wrapper" id="servicesCarousel">
+<div class="carousel-slide">
+<div class="glass-card p-4 sm:p-8 transform transition-all duration-300 hover:scale-[1.02] lg:hover:scale-[1.05] min-h-[260px] sm:min-h-[420px] lg:h-[480px] flex flex-col mx-auto w-auto max-w-[18rem] sm:max-w-sm lg:max-w-none">
+<div class="text-center mb-4">
+<div class="w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm flex-shrink-0">
+<i class="fas fa-shield-alt text-primary text-2xl"></i>
+</div>
+</div>
+<div class="text-center mb-2 sm:mb-3">
+<h3 class="text-lg sm:text-2xl font-bold text-gray-900">Assurance RC Pro</h3>
+</div>
+<div class="text-center mb-3 sm:mb-4">
+<p class="text-gray-700 text-sm sm:text-base leading-relaxed px-2"> Protection complète de votre responsabilité civile professionnelle </p>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="hidden md:block space-y-3 mb-6 px-4">
+<div class="flex items-center justify-center p-3 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10">
+<i class="fas fa-check-circle text-primary text-sm mr-3 flex-shrink-0"></i>
+<span class="text-sm text-gray-800 text-center">Dommages corporels et matériels</span>
+</div>
+<div class="flex items-center justify-center p-3 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10">
+<i class="fas fa-check-circle text-primary text-sm mr-3 flex-shrink-0"></i>
+<span class="text-sm text-gray-800 text-center">Défense pénale et recours</span>
+</div>
+<div class="flex items-center justify-center p-3 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10">
+<i class="fas fa-check-circle text-primary text-sm mr-3 flex-shrink-0"></i>
+<span class="text-sm text-gray-800 text-center">Protection environnementale</span>
+</div>
+</div>
+<div class="mt-auto text-center pb-4 sm:pb-6">
+<a href="nos-services.html" class="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 text-base font-bold text-white bg-primary hover:bg-primary-dark border-2 border-primary rounded-xl transition-all duration-300 transform hover:scale-[1.05] hover:shadow-xl shadow-lg group w-full">
+<span>Découvrir</span>
+<i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-slide">
+<div class="glass-card p-4 sm:p-8 transform transition-all duration-300 hover:scale-[1.02] lg:hover:scale-[1.05] min-h-[260px] sm:min-h-[420px] lg:h-[480px] flex flex-col mx-auto w-auto max-w-[18rem] sm:max-w-sm lg:max-w-none">
+<div class="text-center mb-4">
+<div class="w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm flex-shrink-0">
+<i class="fas fa-car text-primary text-2xl"></i>
+</div>
+</div>
+<div class="text-center mb-2 sm:mb-3">
+<h3 class="text-lg sm:text-2xl font-bold text-gray-900">Assurance W Garage</h3>
+</div>
+<div class="text-center mb-3 sm:mb-4">
+<p class="text-gray-700 text-sm sm:text-base leading-relaxed px-2"> Couverture spécialisée pour vos véhicules professionnels et stock </p>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="hidden md:block space-y-3 mb-6 px-4">
+<div class="flex items-center justify-center p-3 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10">
+<i class="fas fa-check-circle text-primary text-sm mr-3 flex-shrink-0"></i>
+<span class="text-sm text-gray-800 text-center">Véhicules en stock et vente</span>
+</div>
+<div class="flex items-center justify-center p-3 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10">
+<i class="fas fa-check-circle text-primary text-sm mr-3 flex-shrink-0"></i>
+<span class="text-sm text-gray-800 text-center">Véhicules confiés clients</span>
+</div>
+<div class="flex items-center justify-center p-3 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10">
+<i class="fas fa-check-circle text-primary text-sm mr-3 flex-shrink-0"></i>
+<span class="text-sm text-gray-800 text-center">Garantie essais et circulation</span>
+</div>
+</div>
+<div class="mt-auto text-center pb-4 sm:pb-6">
+<a href="nos-services.html" class="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 text-base font-bold text-white bg-primary hover:bg-primary-dark border-2 border-primary rounded-xl transition-all duration-300 transform hover:scale-[1.05] hover:shadow-xl shadow-lg group w-full">
+<span>Découvrir</span>
+<i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-slide">
+<div class="glass-card p-4 sm:p-8 transform transition-all duration-300 hover:scale-[1.02] lg:hover:scale-[1.05] min-h-[260px] sm:min-h-[420px] lg:h-[480px] flex flex-col mx-auto w-auto max-w-[18rem] sm:max-w-sm lg:max-w-none">
+<div class="text-center mb-4">
+<div class="w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto backdrop-blur-sm flex-shrink-0">
+<i class="fas fa-building text-primary text-2xl"></i>
+</div>
+</div>
+<div class="text-center mb-2 sm:mb-3">
+<h3 class="text-lg sm:text-2xl font-bold text-gray-900">Assurance Locaux</h3>
+</div>
+<div class="text-center mb-3 sm:mb-4">
+<p class="text-gray-700 text-sm sm:text-base leading-relaxed px-2"> Protection complète de vos locaux professionnels et équipements </p>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="hidden md:block space-y-3 mb-6 px-4">
+<div class="flex items-center justify-center p-3 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10">
+<i class="fas fa-check-circle text-primary text-sm mr-3 flex-shrink-0"></i>
+<span class="text-sm text-gray-800 text-center">Incendie, dégât des eaux</span>
+</div>
+<div class="flex items-center justify-center p-3 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10">
+<i class="fas fa-check-circle text-primary text-sm mr-3 flex-shrink-0"></i>
+<span class="text-sm text-gray-800 text-center">Vol et vandalisme</span>
+</div>
+<div class="flex items-center justify-center p-3 rounded-lg bg-white/8 backdrop-blur-sm border border-white/10">
+<i class="fas fa-check-circle text-primary text-sm mr-3 flex-shrink-0"></i>
+<span class="text-sm text-gray-800 text-center">Matériel et équipements</span>
+</div>
+</div>
+<div class="mt-auto text-center pb-4 sm:pb-6">
+<a href="nos-services.html" class="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 text-base font-bold text-white bg-primary hover:bg-primary-dark border-2 border-primary rounded-xl transition-all duration-300 transform hover:scale-[1.05] hover:shadow-xl shadow-lg group w-full">
+<span>Découvrir</span>
+<i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="carousel-navigation lg:hidden">
+<button id="prevBtn" class="carousel-btn" aria-label="Service précédent">
+<i class="fas fa-chevron-left"></i>
+</button>
+<div class="carousel-dots">
+<div class="carousel-dot active" data-slide="0"></div>
+<div class="carousel-dot" data-slide="1"></div>
+<div class="carousel-dot" data-slide="2"></div>
+</div>
+<button id="nextBtn" class="carousel-btn" aria-label="Service suivant">
+<i class="fas fa-chevron-right"></i>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section id="why-choose-us" class="py-20 bg-why-choose bg-cover bg-center relative">
+<div class="absolute inset-0 bg-white/80 z-10"></div>
+<div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
+<div class="text-center mb-16">
+<p class="text-primary font-semibold text-sm uppercase tracking-wide mb-4">Nos avantages</p>
+<h2 class="text-3xl lg:text-5xl font-bold text-gray-900">Pourquoi nous choisir ?</h2>
+</div>
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="flex-1">
+<div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
+<div class="glass-card p-6 text-center transform transition-all duration-500 hover:rotate-1 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:bg-primary/20 hover:scale-110">
+<i class="fas fa-medal text-primary text-xl"></i>
+</div>
+<h3 class="font-semibold text-gray-900 mb-2">15 ans d'expertise</h3>
+<p class="text-sm text-gray-600">Spécialiste des négociants automobiles</p>
+</div>
+<div class="glass-card p-6 text-center transform transition-all duration-500 hover:-rotate-1 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:bg-primary/20 hover:scale-110">
+<i class="fas fa-clock text-primary text-xl"></i>
+</div>
+<h3 class="font-semibold text-gray-900 mb-2">Réponse rapide</h3>
+<p class="text-sm text-gray-600">Devis sous 24h maximum</p>
+</div>
+<div class="glass-card p-6 text-center transform transition-all duration-500 hover:rotate-1 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:bg-primary/20 hover:scale-110">
+<i class="fas fa-cogs text-primary text-xl"></i>
+</div>
+<h3 class="font-semibold text-gray-900 mb-2">Sur mesure</h3>
+<p class="text-sm text-gray-600">Solutions adaptées à vos besoins</p>
+</div>
+<div class="glass-card p-6 text-center transform transition-all duration-500 hover:-rotate-1 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-300 hover:bg-primary/20 hover:scale-110">
+<i class="fas fa-euro-sign text-primary text-xl"></i>
+</div>
+<h3 class="font-semibold text-gray-900 mb-2">Tarifs compétitifs</h3>
+<p class="text-sm text-gray-600">Des contrats optimisés à prix juste</p>
+</div>
+</div>
+</div>
+<div class="flex-1">
+<div class="max-w-xl mx-auto text-center lg:text-left lg:mx-0">
+<h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-6"> Une expertise reconnue au service de votre activité </h3>
+<p class="text-lg text-gray-600 mb-6 leading-relaxed"> Depuis plus de 15 ans, nous accompagnons les professionnels de l'automobile avec des solutions d'assurance personnalisées. Notre connaissance approfondie du secteur nous permet de vous proposer les meilleures garanties au meilleur prix. </p>
+<ul class="space-y-3 mb-8 max-w-xs mx-auto text-left lg:mx-0">
+<li class="flex items-start gap-3 justify-start">
+<i class="fas fa-check-circle text-primary mr-3"></i>
+<span class="text-gray-700 text-left">Courtier indépendant</span>
+</li>
+<li class="flex items-start gap-3 justify-start">
+<i class="fas fa-check-circle text-primary mr-3"></i>
+<span class="text-gray-700 text-left">Plus de 5000 clients satisfaits</span>
+</li>
+<li class="flex items-start gap-3 justify-start">
+<i class="fas fa-check-circle text-primary mr-3"></i>
+<span class="text-gray-700 text-left">Présence nationale</span>
+</li>
+<li class="flex items-start gap-3 justify-start">
+<i class="fas fa-check-circle text-primary mr-3"></i>
+<span class="text-gray-700 text-left">Équipe dédiée aux professionnels</span>
+</li>
+</ul>
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+<a href="#contact" class="bg-gradient-to-br from-primary to-primary-dark text-white px-8 py-4 rounded-lg hover:bg-primary-dark hover:-translate-y-0.5 shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:scale-[1.02] inline-flex items-center justify-center">
+<i class="fas fa-phone mr-2"></i> Contactez-nous maintenant </a>
+<a href="nos-services.html" class="border-2 border-primary text-primary px-8 py-4 rounded-lg hover:bg-primary hover:text-white hover:-translate-y-0.5 transition-all text-center inline-flex items-center justify-center">
+<i class="fas fa-info-circle mr-2"></i> Nos formules </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="contact" class="py-12 sm:py-16 lg:py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+<div class="flex-1 text-center lg:text-left max-w-md mx-auto lg:max-w-none lg:ml-8 xl:ml-16">
+<p class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-3 sm:mb-4">Contactez-nous</p>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-6">Prenons contact</h2>
+<div class="mb-6 sm:mb-8 max-w-md mx-auto lg:max-w-none lg:mx-0">
+<div class="bg-white/70 backdrop-blur-sm border border-gray-200/60 rounded-xl p-4 sm:p-6 space-y-4 sm:space-y-6 text-left">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+<i class="fas fa-phone text-primary text-sm sm:text-base"></i>
+</div>
+<div class="leading-tight">
+<h4 class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Téléphone</h4>
+<p class="text-base sm:text-lg text-primary">04 78 72 53 26</p>
+<p class="text-xs sm:text-sm text-gray-500">Lun-Ven 10h-18h</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+<i class="fas fa-envelope text-primary text-sm sm:text-base"></i>
+</div>
+<div class="leading-tight">
+<h4 class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Email</h4>
+<p class="text-base sm:text-lg text-primary break-all">contact@assur-tous-risques.com</p>
+<p class="text-xs sm:text-sm text-gray-500">Réponse sous 4h</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+<i class="fas fa-map-marker-alt text-primary"></i>
+</div>
+<div class="leading-tight">
+<h4 class="font-semibold text-gray-900 mb-1 text-sm sm:text-base">Zone d'intervention</h4>
+<p class="text-base sm:text-lg text-gray-700">Partout en France</p>
+<p class="text-xs sm:text-sm text-gray-500">Services 100% à distance</p>
+</div>
+</div>
+</div>
+</div>
+<a href="tel:0478725326" class="bg-gradient-to-br from-primary to-primary-dark text-white px-6 py-3 rounded-lg hover:-translate-y-0.5 shadow-lg hover:shadow-primary/30 transition-all duration-300 transform hover:scale-[1.02] inline-flex items-center mt-2 mb-6 sm:mb-0">
+<i class="fas fa-phone mr-2"></i>
+<span>Demandez votre devis</span>
+</a>
+</div>
+<div class="flex-1">
+<div class="w-full h-[300px] sm:h-[400px] lg:h-[500px] xl:h-[600px] overflow-hidden">
+<img src="images/photo contact.webp" alt="Contact Assur Tous Risques" class="w-full h-full object-contain transition-transform duration-300 hover:scale-105">
+</div>
+</div>
+</div>
+</div>
+</section>
+<div id="footer"></div>
+<script> // Script du carrousel responsive document.addEventListener('DOMContentLoaded', function() { // Script du carrousel const carousel = document.getElementById('servicesCarousel'); const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const dots = document.querySelectorAll('.carousel-dot'); let currentSlide = 0; const totalSlides = 3; // Fonction pour déterminer le nombre de slides visibles selon l'écran function getSlidesPerView() { if (window.innerWidth >= 1024) return 3; // Desktop: grille normale if (window.innerWidth >= 768) return 2; // Tablette: 2 cartes return 1; // Mobile: 1 carte } // Fonction pour calculer la largeur d'une slide function getSlideWidth() { const slidesPerView = getSlidesPerView(); if (slidesPerView >= 3) return 0; // Pas de transform sur desktop return 100 / slidesPerView; } // Fonction pour mettre à jour la position du carrousel function updateCarousel() { const slidesPerView = getSlidesPerView(); if (slidesPerView >= 3) { // Desktop: pas de transform, grille normale carousel.style.transform = 'translateX(0%)'; return; } const slideWidth = getSlideWidth(); const maxSlide = totalSlides - slidesPerView; // Ajuster currentSlide si nécessaire if (currentSlide > maxSlide) { currentSlide = maxSlide; } // Centrage de la slide en mobile: translateX basé sur slideWidth (100%) et recentrage via gap nul const translateX = -currentSlide * slideWidth; carousel.style.transform = `translateX(${translateX}%)`; } // Fonction pour mettre à jour les indicateurs function updateDots() { dots.forEach((dot, index) => { dot.classList.toggle('active', index === currentSlide); }); } // Fonction pour mettre à jour les boutons function updateButtons() { const slidesPerView = getSlidesPerView(); if (slidesPerView >= 3) return; // Pas de boutons sur desktop const maxSlide = totalSlides - slidesPerView; prevBtn.disabled = currentSlide === 0; nextBtn.disabled = currentSlide >= maxSlide; } // Navigation précédent prevBtn.addEventListener('click', function() { if (currentSlide > 0) { currentSlide--; updateCarousel(); updateDots(); updateButtons(); } }); // Navigation suivant nextBtn.addEventListener('click', function() { const slidesPerView = getSlidesPerView(); const maxSlide = totalSlides - slidesPerView; if (currentSlide < maxSlide) { currentSlide++; updateCarousel(); updateDots(); updateButtons(); } }); // Navigation par dots dots.forEach((dot, index) => { dot.addEventListener('click', function() { const slidesPerView = getSlidesPerView(); if (slidesPerView >= 3) return; // Pas de dots sur desktop const maxSlide = totalSlides - slidesPerView; currentSlide = Math.min(index, maxSlide); updateCarousel(); updateDots(); updateButtons(); }); }); // Support du swipe/touch pour mobile let touchStartX = 0; let touchEndX = 0; carousel.addEventListener('touchstart', function(e) { touchStartX = e.changedTouches[0].screenX; }); carousel.addEventListener('touchend', function(e) { touchEndX = e.changedTouches[0].screenX; handleSwipe(); }); function handleSwipe() { const swipeThreshold = 50; const diff = touchStartX - touchEndX; if (Math.abs(diff) > swipeThreshold) { if (diff > 0) { // Swipe gauche (suivant) nextBtn.click(); } else { // Swipe droite (précédent) prevBtn.click(); } } } // Réinitialiser le carrousel lors du resize window.addEventListener('resize', function() { updateCarousel(); updateButtons(); updateDots(); }); // Navigation clavier document.addEventListener('keydown', function(e) { if (e.key === 'ArrowLeft') { prevBtn.click(); } else if (e.key === 'ArrowRight') { nextBtn.click(); } }); // Initialiser le carrousel updateCarousel(); updateDots(); updateButtons(); }); </script>
+</body>
+</html>

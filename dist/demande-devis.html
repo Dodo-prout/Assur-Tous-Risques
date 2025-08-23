@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Demandez votre devis personnalisé pour votre assurance automobile. Réponse rapide et tarif adapté à vos besoins.">
+<link href="https://cdn.tailwindcss.com" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"> .form-step.hidden { opacity: 0; transform: translateX(100%); position: absolute; pointer-events: none; } /* Barre de progression - Transition fluide */ .progress-bar { transition: width 0.5s ease; } </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Demande de Devis - Assur Tous Risques</title>
+<script src="components.js"></script>
+</head>
+<body class="bg-gray-50">
+<div id="header"></div>
+<section class="bg-hero bg-cover bg-center pt-16 pb-0 relative min-h-[85vh] md:min-h-screen before:content-[''] before:absolute before:inset-0 before:bg-slate-50/70 before:z-10">
+<svg class="absolute inset-0 w-full h-full pointer-events-none select-none opacity-20 z-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs>
+<radialGradient id="blob1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+<stop offset="0%" stop-color="#aa1520" stop-opacity="0.8" />
+<stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+</radialGradient>
+<radialGradient id="blob2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+<stop offset="0%" stop-color="#c74451" stop-opacity="0.6" />
+<stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+</radialGradient>
+</defs>
+<circle class="animate-blob" cx="200" cy="300" r="200" fill="url(#blob1)" />
+<circle class="animate-blob" cx="600" cy="200" r="150" fill="url(#blob2)" style="animation-delay: 2s;" />
+</svg>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 z-20">
+<div class="flex flex-col items-center min-h-[85vh] md:min-h-screen justify-center text-center">
+<div class="max-w-4xl mx-auto">
+<p class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-3 sm:mb-4">Demande personnalisée</p>
+<h1 class="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold tracking-tight leading-tight mb-4 sm:mb-6 text-black"> Demande de Devis </h1>
+<p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto"> Obtenez votre devis personnalisé en quelques minutes. Nos experts analysent vos besoins pour vous proposer la meilleure solution d'assurance. </p>
+<div class="flex items-center justify-center gap-4 text-sm text-gray-500 mb-8 sm:mb-12">
+<div class="flex items-center gap-2 group hover:text-primary transition-colors duration-300">
+<i class="fas fa-clock text-primary group-hover:scale-110 transition-transform duration-300"></i>
+<span>5 minutes</span>
+</div>
+<div class="flex items-center gap-2 group hover:text-primary transition-colors duration-300">
+<i class="fas fa-thumbs-up text-primary group-hover:scale-110 transition-transform duration-300"></i>
+<span>100% gratuit</span>
+</div>
+<div class="flex items-center gap-2 group hover:text-primary transition-colors duration-300">
+<i class="fas fa-phone text-primary group-hover:scale-110 transition-transform duration-300"></i>
+<span>Réponse rapide</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-30 hidden md:block">
+<a href="#devis-form" class="flex items-center justify-center w-12 h-12 bg-primary rounded-full text-white hover:bg-primary-dark transition-colors duration-300 shadow-lg">
+<i class="fas fa-chevron-down text-xl"></i>
+</a>
+</div>
+</section>
+<section id="devis-form" class="py-12 min-h-[80vh] flex flex-col justify-center">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+<div class="text-center mb-12">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"> Remplissez votre demande </h2>
+<p class="text-lg text-gray-600 max-w-2xl mx-auto"> Suivez les étapes ci-dessous pour recevoir votre devis personnalisé. Toutes vos informations sont sécurisées et confidentielles. </p>
+</div>
+<div class="mb-8">
+<div class="flex items-center justify-between text-sm text-gray-500 mb-2">
+<span>Étape <span id="current-step">1</span> sur 4</span>
+<span><span id="progress-percent">25</span>%</span>
+</div>
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div id="progress-bar" class="bg-primary h-2 rounded-full progress-bar" style="width: 25%"></div>
+</div>
+</div>
+<div class="bg-white rounded-2xl shadow-lg p-6 min-h-[40vh]">
+<form id="quote-form" class="space-y-8">
+<div id="step-1" class="form-step">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Quel type d'activité exercez-vous ?</h2>
+<div class="grid md:grid-cols-2 gap-4">
+<label class="relative cursor-pointer">
+<input type="radio" name="activity_type" value="negociant" class="sr-only peer">
+<div class="border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 peer-checked:border-primary peer-checked:bg-primary/5 transition-all duration-300 ease-in-out">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+<i class="fas fa-car text-primary text-xl group-hover:scale-110 transition-transform duration-300"></i>
+</div>
+<h3 class="text-lg font-semibold mb-2">Négociant Automobile</h3>
+<p class="text-gray-600 text-sm">Vente de véhicules d'occasion, concession, etc.</p>
+</div>
+</label>
+<label class="relative cursor-pointer">
+<input type="radio" name="activity_type" value="garage" class="sr-only peer">
+<div class="border-2 border-gray-200 rounded-xl p-6 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 peer-checked:border-primary peer-checked:bg-primary/5 transition-all duration-300 ease-in-out">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
+<i class="fas fa-wrench text-primary text-xl group-hover:scale-110 transition-transform duration-300"></i>
+</div>
+<h3 class="text-lg font-semibold mb-2">Garage</h3>
+<p class="text-gray-600 text-sm">Réparation, entretien, mécanique générale</p>
+</div>
+</label>
+</div>
+</div>
+<div id="step-2" class="form-step hidden">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Informations sur votre entreprise</h2>
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nom de l'entreprise <span class="text-red-500">*</span></label>
+<input type="text" name="company_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">SIRET</label>
+<input type="text" name="siret" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Chiffre d'affaires annuel</label>
+<select name="turnover" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
+<option value="">Sélectionnez</option>
+<option value="0-100k">Moins de 100 000 €</option>
+<option value="100k-500k">100 000 € - 500 000 €</option>
+<option value="500k-1M">500 000 € - 1 000 000 €</option>
+<option value="1M+">Plus de 1 000 000 €</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nombre d'employés</label>
+<select name="employees" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
+<option value="">Sélectionnez</option>
+<option value="1">1 (dirigeant seul)</option>
+<option value="2-5">2 à 5 employés</option>
+<option value="6-10">+ de 5 employés</option>
+</select>
+</div>
+</div>
+<div class="mt-6">
+<label class="block text-sm font-medium text-gray-700 mb-2">Adresse complète <span class="text-red-500">*</span></label>
+<textarea name="address" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" placeholder="Adresse, code postal, ville"></textarea>
+</div>
+</div>
+<div id="step-3" class="form-step hidden">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Quelles garanties vous intéressent ?</h2>
+<div class="space-y-4">
+<label class="flex items-start gap-3 cursor-pointer group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300 ease-in-out">
+<input type="checkbox" name="guarantees[]" value="rc_pro" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary/20 group-hover:scale-110 transition-transform duration-300">
+<div>
+<div class="font-medium text-gray-900 group-hover:text-primary transition-colors duration-300">Assurance W Garage</div>
+<div class="text-sm text-gray-600">Protection de votre responsabilité civile, de votre activité et de vos véhicules</div>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300 ease-in-out">
+<input type="checkbox" name="guarantees[]" value="multirisque" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary/20 group-hover:scale-110 transition-transform duration-300">
+<div>
+<div class="font-medium text-gray-900 group-hover:text-primary transition-colors duration-300">Assurance de votre local</div>
+<div class="text-sm text-gray-600">Couverture complète de vos locaux, équipements et marchandises</div>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group hover:bg-gray-50 p-3 rounded-lg transition-all duration-300 ease-in-out">
+<input type="checkbox" name="guarantees[]" value="legal" class="mt-1 rounded border-gray-300 text-primary focus:ring-primary/20 group-hover:scale-110 transition-transform duration-300">
+<div>
+<div class="font-medium text-gray-900 group-hover:text-primary transition-colors duration-300">Protection Juridique</div>
+<div class="text-sm text-gray-600">Assistance et prise en charge des frais de justice</div>
+</div>
+</label>
+</div>
+</div>
+<div id="step-4" class="form-step hidden">
+<h2 class="text-2xl font-bold text-gray-900 mb-6">Vos coordonnées</h2>
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Prénom *</label>
+<input type="text" name="first_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Nom *</label>
+<input type="text" name="last_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+<input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 mb-2">Téléphone *</label>
+<input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors">
+</div>
+</div>
+<div class="mt-6">
+<label class="block text-sm font-medium text-gray-700 mb-2">Message (optionnel)</label>
+<textarea name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors" placeholder="Précisions sur votre demande, questions particulières..."></textarea>
+</div>
+<div class="mt-6 p-4 bg-gray-50 rounded-lg">
+<label class="flex items-start gap-3 cursor-pointer">
+<input type="checkbox" name="consent" required class="mt-1 rounded border-gray-300 text-primary focus:ring-primary/20">
+<div class="text-sm text-gray-600"> J'accepte d'être contacté par Assur Tous Risques concernant ma demande de devis et je consens au traitement de mes données personnelles. * </div>
+</label>
+</div>
+</div>
+<div class="flex justify-between pt-8 border-t border-gray-200">
+<button type="button" id="prev-btn" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors hidden">
+<i class="fas fa-chevron-left mr-2"></i> Précédent </button>
+<div class="flex gap-4">
+<button type="button" id="next-btn" class="px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors"> Suivant <i class="fas fa-chevron-right ml-2"></i>
+</button>
+<button type="submit" id="submit-btn" class="px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors hidden">
+<i class="fas fa-paper-plane mr-2"></i> Envoyer ma demande </button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</section>
+<section class="py-12 sm:py-16 lg:py-20 relative overflow-hidden">
+<svg class="absolute inset-0 w-full h-full pointer-events-none select-none opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs>
+<radialGradient id="halo1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+<stop offset="0%" stop-color="#aa1520" stop-opacity="0.8" />
+<stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+</radialGradient>
+<radialGradient id="halo2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+<stop offset="0%" stop-color="#c74451" stop-opacity="0.6" />
+<stop offset="100%" stop-color="#aa1520" stop-opacity="0" />
+</radialGradient>
+</defs>
+<circle class="animate-blob" cx="200" cy="300" r="200" fill="url(#halo1)" />
+<circle class="animate-blob animation-delay-2000" cx="600" cy="200" r="150" fill="url(#halo2)" />
+</svg>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<p class="text-primary font-semibold text-xs sm:text-sm uppercase tracking-wide mb-3 sm:mb-4">Avantages exclusifs</p>
+<h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-10 sm:mb-12 lg:mb-16 max-w-4xl mx-auto">Pourquoi choisir notre devis ?</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
+<div class="text-center group hover:-translate-y-2 transition-all duration-300 ease-in-out">
+<div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+<i class="fas fa-rocket text-xl sm:text-2xl text-primary group-hover:scale-125 transition-transform duration-300"></i>
+</div>
+<h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300">Réponse rapide</h3>
+<p class="text-sm sm:text-base text-gray-600 max-w-xs mx-auto">Recevez votre devis personnalisé sous 24h maximum</p>
+</div>
+<div class="text-center group hover:-translate-y-2 transition-all duration-300 ease-in-out">
+<div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+<i class="fas fa-user-tie text-xl sm:text-2xl text-primary group-hover:scale-125 transition-transform duration-300"></i>
+</div>
+<h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300">Expertise métier</h3>
+<p class="text-sm sm:text-base text-gray-600 max-w-xs mx-auto">Nos conseillers connaissent parfaitement vos spécificités</p>
+</div>
+<div class="text-center group hover:-translate-y-2 transition-all duration-300 ease-in-out">
+<div class="w-14 sm:w-16 h-14 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+<i class="fas fa-chart-line text-xl sm:text-2xl text-primary group-hover:scale-125 transition-transform duration-300"></i>
+</div>
+<h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:text-primary transition-colors duration-300">Tarifs compétitifs</h3>
+<p class="text-sm sm:text-base text-gray-600 max-w-xs mx-auto">Les meilleures conditions grâce à nos partenariats</p>
+</div>
+</div>
+</div>
+</section>
+<div id="footer"></div>
+<script> // Gestion du formulaire multi-étapes let currentStep = 1; const totalSteps = 4; const nextBtn = document.getElementById('next-btn'); const prevBtn = document.getElementById('prev-btn'); const submitBtn = document.getElementById('submit-btn'); const progressBar = document.getElementById('progress-bar'); const currentStepSpan = document.getElementById('current-step'); const progressPercent = document.getElementById('progress-percent'); function updateProgress() { const progress = (currentStep / totalSteps) * 100; progressBar.style.width = progress + '%'; currentStepSpan.textContent = currentStep; progressPercent.textContent = Math.round(progress); } function showStep(step) { // Masquer toutes les étapes document.querySelectorAll('.form-step').forEach(stepElement => { stepElement.classList.add('hidden'); }); // Afficher l'étape courante document.getElementById(`step-${step}`).classList.remove('hidden'); // Gérer les boutons if (step === 1) { prevBtn.classList.add('hidden'); } else { prevBtn.classList.remove('hidden'); } if (step === totalSteps) { nextBtn.classList.add('hidden'); submitBtn.classList.remove('hidden'); } else { nextBtn.classList.remove('hidden'); submitBtn.classList.add('hidden'); } updateProgress(); } nextBtn.addEventListener('click', () => { if (validateCurrentStep()) { currentStep++; showStep(currentStep); } }); prevBtn.addEventListener('click', () => { currentStep--; showStep(currentStep); }); function validateCurrentStep() { const currentStepElement = document.getElementById(`step-${currentStep}`); if (currentStep === 1) { // Vérifier qu'un type d'activité est sélectionné const activityType = currentStepElement.querySelector('input[name="activity_type"]:checked'); if (!activityType) { alert('Veuillez sélectionner votre type d\'activité.'); return false; } } else if (currentStep === 2) { // Vérifier les champs obligatoires de l'étape 2 const requiredFields = currentStepElement.querySelectorAll('input[required], textarea[required]'); for (let field of requiredFields) { if (!field.value.trim()) { alert('Veuillez remplir tous les champs obligatoires.'); field.focus(); return false; } } } else if (currentStep === 4) { // Vérifier les champs obligatoires de l'étape 4 const requiredFields = currentStepElement.querySelectorAll('input[required], textarea[required]'); for (let field of requiredFields) { if (!field.value.trim()) { alert('Veuillez remplir tous les champs obligatoires.'); field.focus(); return false; } } // Vérifier le consentement const consent = currentStepElement.querySelector('input[name="consent"]'); if (!consent.checked) { alert('Veuillez accepter les conditions pour continuer.'); return false; } } return true; } // Soumission du formulaire document.getElementById('quote-form').addEventListener('submit', async (e) => { e.preventDefault(); if (!validateCurrentStep()) { return; } // Simulation d'envoi submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Envoi en cours...'; submitBtn.disabled = true; // Simuler un délai d'envoi setTimeout(() => { alert('Votre demande de devis a été envoyée avec succès ! Vous recevrez une réponse sous 24h.'); // Réinitialiser le formulaire document.getElementById('quote-form').reset(); currentStep = 1; showStep(currentStep); submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i> Envoyer ma demande'; submitBtn.disabled = false; }, 2000); }); // Initialiser l'affichage showStep(1); </script>
+</body>
+</html>

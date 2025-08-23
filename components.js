@@ -22,17 +22,28 @@ function initMobileMenu() {
     const navToggle = document.getElementById('nav-toggle');
     const mobileNav = document.getElementById('mobile-nav');
     const mobileClose = document.getElementById('mobile-close');
+    const hamburgerLine1 = document.getElementById('hamburger-line-1');
+    const hamburgerLine2 = document.getElementById('hamburger-line-2');
+    const hamburgerLine3 = document.getElementById('hamburger-line-3');
     
     if (navToggle && mobileNav) {
         // Ouvrir le menu avec le bouton hamburger
         navToggle.addEventListener('click', function() {
             mobileNav.classList.remove('translate-x-full');
+            
+            // Animation du hamburger en croix
+            if (hamburgerLine1 && hamburgerLine2 && hamburgerLine3) {
+                hamburgerLine1.classList.add('rotate-45', 'translate-y-[6px]');
+                hamburgerLine2.classList.add('opacity-0', 'scale-x-0');
+                hamburgerLine3.classList.add('-rotate-45', '-translate-y-[6px]');
+            }
         });
         
         // Fermer le menu avec la croix
         if (mobileClose) {
             mobileClose.addEventListener('click', function() {
                 mobileNav.classList.add('translate-x-full');
+                resetHamburger();
             });
         }
         
@@ -41,6 +52,7 @@ function initMobileMenu() {
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
                 mobileNav.classList.add('translate-x-full');
+                resetHamburger();
             });
         });
         
@@ -48,8 +60,18 @@ function initMobileMenu() {
         document.addEventListener('click', function(event) {
             if (!mobileNav.contains(event.target) && !navToggle.contains(event.target)) {
                 mobileNav.classList.add('translate-x-full');
+                resetHamburger();
             }
         });
+    }
+    
+    // Fonction pour réinitialiser l'animation du hamburger
+    function resetHamburger() {
+        if (hamburgerLine1 && hamburgerLine2 && hamburgerLine3) {
+            hamburgerLine1.classList.remove('rotate-45', 'translate-y-[6px]');
+            hamburgerLine2.classList.remove('opacity-0', 'scale-x-0');
+            hamburgerLine3.classList.remove('-rotate-45', '-translate-y-[6px]');
+        }
     }
 }
 
@@ -77,10 +99,12 @@ function highlightActivePage() {
     navLinks.forEach(link => {
         const linkPage = link.getAttribute('data-page');
         if (linkPage === currentPage) {
-            // Menu desktop
-            if (link.classList.contains('nav-underline')) {
+            // Menu desktop - utiliser TailwindCSS pour l'underline
+            if (link.classList.contains('after:content-[\'\']')) {
                 link.classList.remove('text-gray-700', 'hover:text-primary');
                 link.classList.add('text-primary', 'font-medium');
+                // Ajouter l'underline actif
+                link.classList.add('after:w-full');
             }
             // Menu mobile
             else {

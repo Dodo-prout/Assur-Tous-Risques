@@ -41,94 +41,9 @@
         }
     </script>
     <style>
-        /* Effet underline pour navigation */
-        .nav-underline {
-            position: relative;
-        }
-
-        .nav-underline::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -4px;
-            height: 2px;
-            width: 0;
-            background-color: #aa1520;
-            transition: width 0.3s ease;
-        }
-
-        .nav-underline:hover::after {
-            width: 100%;
-        }
-
-        /* Animation du menu hamburger */
-        .hamburger-line {
-            transform-origin: center;
-        }
-
-        #nav-toggle.active .hamburger-line:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        #nav-toggle.active .hamburger-line:nth-child(2) {
-            opacity: 0;
-            transform: scaleX(0);
-        }
-
-        #nav-toggle.active .hamburger-line:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Responsive du menu hamburger */
-        @media (max-width: 1023px) {
-            .hamburger-line {
-                background-color: #374151;
-            }
-            
-            #nav-toggle:hover .hamburger-line {
-                background-color: #aa1520;
-            }
-            
-            #nav-toggle.active .hamburger-line {
-                background-color: #aa1520;
-            }
-        }
-
-        /* Glass card effect */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Overlay pour hero */
-        .overlay-hero {
-            background: linear-gradient(135deg, rgba(170, 21, 32, 0.9) 0%, rgba(199, 68, 81, 0.8) 100%);
-        }
-
-        /* Overlay pour services */
-        .overlay-services {
-            background: linear-gradient(135deg, rgba(170, 21, 32, 0.8) 0%, rgba(199, 68, 81, 0.7) 100%);
-        }
-
-        /* Overlay pour contenu */
-        .overlay-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        /* Style pour les inputs de formulaire */
-        .form-input {
-            border: 2px solid #e5e7eb;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus {
-            border-color: #aa1520;
-            box-shadow: 0 0 0 3px rgba(170, 21, 32, 0.1);
-        }
-
-        /* Animation blob */
+        /* ===== STYLES ESSENTIELS GARDÉS ===== */
+        
+        /* Animation blob - Nécessaire pour l'arrière-plan animé */
         @keyframes blob {
             0% { transform: translate(0px, 0px) scale(1); }
             33% { transform: translate(30px, -50px) scale(1.1); }
@@ -140,41 +55,7 @@
             animation: blob 7s infinite;
         }
 
-        /* Carousel responsive */
-        @media (max-width: 768px) {
-            .carousel-container {
-                scroll-snap-type: x mandatory;
-            }
-            .carousel-item {
-                scroll-snap-align: start;
-                min-width: 100%;
-            }
-        }
 
-        /* Animation FAQ */
-        .faq-item {
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Animation des étapes du formulaire */
-        .form-step {
-            transition: all 0.5s ease;
-        }
-
-        .form-step.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .form-step:not(.active) {
-            opacity: 0;
-            transform: translateX(100%);
-        }
     </style>
     
     <!-- Font Awesome -->
@@ -500,7 +381,7 @@
                 });
             }
 
-            // Animation d'apparition des cartes au scroll
+            // Animation d'apparition des cartes au scroll - Remplacé par TailwindCSS
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -100px 0px'
@@ -509,17 +390,18 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        // Utilisation des classes TailwindCSS au lieu de styles inline
+                        entry.target.classList.remove('opacity-0', 'translate-y-8');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
                     }
                 });
             }, observerOptions);
 
             // Observer toutes les cartes de services avec des délais échelonnés
-            document.querySelectorAll('.glass-card, .reveal').forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            document.querySelectorAll('.reveal').forEach((card, index) => {
+                // Classes TailwindCSS pour l'état initial
+                card.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out');
+                // Délai échelonné avec TailwindCSS
                 card.style.transitionDelay = `${index * 100}ms`;
                 observer.observe(card);
             });
